@@ -3,8 +3,8 @@ import '../styles/main.css';  // Import your CSS
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'MaliChina Store - Produits de Chine au Mali',
-  description: 'Votre plateforme de confiance pour des produits de qualité de Chine, livrés directement au Mali.',
+  title: 'Mali Premium Store - Produits de qualité au Mali',
+  description: 'Votre plateforme premium pour des produits de qualité internationale, livrés directement au Mali. Prix imbattables, garantie complète.',
 };
 
 export default function RootLayout({
