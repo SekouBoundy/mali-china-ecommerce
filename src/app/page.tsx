@@ -88,7 +88,7 @@ export default function HomePage() {
                 🛒
                 <span className="cart-badge">{cartItems.length}</span>
               </button>
-              <button className="user-btn">👤</button>
+              <a href="/auth" className="user-btn">👤</a>
             </div>
           </div>
         </div>
