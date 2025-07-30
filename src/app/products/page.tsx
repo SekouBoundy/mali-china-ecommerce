@@ -253,7 +253,11 @@ function ProductCard({ product }: { product: any }) {
     ? Math.round(((product.originalPrice.cfa - product.price.cfa) / product.originalPrice.cfa) * 100)
     : 0;
 
-  return (
+    // UPDATE: Replace the ProductCard return statement in src/app/products/page.tsx
+// Find the ProductCard function and replace its return with this:
+
+return (
+  <a href={`/products/${product.id}`} className="product-card-link">
     <div className="product-card">
       <div className="product-image-container">
         {product.badge && (
@@ -269,7 +273,10 @@ function ProductCard({ product }: { product: any }) {
         )}
         
         <button 
-          onClick={() => setIsFavorite(!isFavorite)}
+          onClick={(e) => {
+            e.preventDefault();
+            setIsFavorite(!isFavorite);
+          }}
           className="favorite-btn"
         >
           {isFavorite ? '❤️' : '🤍'}
@@ -282,7 +289,13 @@ function ProductCard({ product }: { product: any }) {
         />
         
         <div className="product-overlay">
-          <button className="quick-view-btn">
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              // Quick view logic here
+            }}
+            className="quick-view-btn"
+          >
             👁️ Aperçu rapide
           </button>
         </div>
@@ -330,6 +343,11 @@ function ProductCard({ product }: { product: any }) {
         </div>
 
         <button
+          onClick={(e) => {
+            e.preventDefault();
+            // Add to cart logic here
+            alert('Produit ajouté au panier!');
+          }}
           disabled={!product.inStock}
           className={`add-to-cart-btn ${product.inStock ? 'available' : 'unavailable'}`}
         >
@@ -337,5 +355,8 @@ function ProductCard({ product }: { product: any }) {
         </button>
       </div>
     </div>
-  );
+  </a>
+);
+
+ 
 }
