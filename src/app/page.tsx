@@ -385,9 +385,9 @@ function ShoppingCart({ isOpen, onClose, cartItems, onUpdateQuantity, onRemoveIt
               </div>
 
               <div className="checkout-section">
-                <button className="checkout-btn">
+                <a href="/checkout" className="checkout-btn">
                   🔒 Procéder au paiement
-                </button>
+                </a>
                 <button onClick={onClose} className="continue-shopping">
                   Continuer les achats
                 </button>

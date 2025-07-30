@@ -169,9 +169,9 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 <button onClick={handleAddToCart} className="add-to-cart-btn">
                   🛒 Ajouter au panier • {(product.price.cfa * quantity).toLocaleString('fr-FR')} CFA
                 </button>
-                <button className="buy-now-btn">
-                  ⚡ Acheter maintenant
-                </button>
+                <a href="/checkout" className="buy-now-btn">
+                ⚡ Acheter maintenant
+                </a>    
               </div>
             </div>
 
