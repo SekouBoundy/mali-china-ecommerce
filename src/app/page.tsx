@@ -24,11 +24,11 @@ export default function HomePage() {
             {/* Navigation */}
             <nav>
               <ul className="nav">
-                <li><a href="/accueil">Accueil</a></li>
-                <li><a href="/produits">Produits</a></li>
-                <li><a href="/telephones">Téléphones</a></li>
-                <li><a href="/accessoires">Accessoires</a></li>
-                <li><a href="/electronique">Électronique</a></li>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/products">Produits</a></li>
+                <li><a href="/phones">Téléphones</a></li>
+                <li><a href="/accessories">Accessoires</a></li>
+                <li><a href="/electronics">Électronique</a></li>
               </ul>
             </nav>
             
@@ -223,11 +223,21 @@ export default function HomePage() {
           
           {/* Call to Action */}
           <div style={{ marginBottom: '3rem' }}>
-            <a href="/produits" className="btn btn-primary">
+            <a href="/products" className="btn btn-primary">
               🛍️ Découvrir nos produits
             </a>
             <a href="/contact" className="btn btn-secondary" style={{ marginLeft: '1rem' }}>
               📞 Nous contacter
+            </a>
+          </div>
+
+          {/* And in Hero Section CTA buttons: */}
+          <div className="hero-buttons">
+            <a href="/products" className="btn btn-primary btn-large">
+              🛍️ Explorer les produits
+            </a>
+            <a href="/how-it-works" className="btn btn-outline btn-large">
+              📖 Comment ça marche
             </a>
           </div>
         </div>
