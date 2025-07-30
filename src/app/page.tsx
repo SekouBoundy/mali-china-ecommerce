@@ -1,6 +1,10 @@
 ﻿// src/app/page.tsx - COMPLETE FILE REPLACEMENT
 'use client';
 import React, { useState } from 'react';
+import { FeaturedProducts } from '@/components/sections/FeaturedProducts';
+import { CategoriesShowcase } from '../components/sections/CategoriesShowcase';
+
+
 
 // Sample cart data
 const initialCartItems = [
@@ -242,6 +246,12 @@ export default function HomePage() {
           </svg>
         </div>
       </section>
+
+      {/* Featured Products Section */}
+      <FeaturedProducts />
+      <CategoriesShowcase />
+
+
 
       {/* Main Content */}
       <main className="main-content">
