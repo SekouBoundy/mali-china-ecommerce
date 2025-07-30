@@ -93,129 +93,153 @@ export default function HomePage() {
           </div>
         </div>
       </header>
+      {/* NEW HERO SECTION with CSS Classes */}
+      <section className="new-hero-section">
+        {/* Background Pattern */}
+        <div className="bg-pattern">
+          <div className="bg-pattern-left"></div>
+          <div className="bg-pattern-right"></div>
+        </div>
 
-      {/* HERO SECTION */}
-      <section className="hero-section">
         <div className="container">
-          <div className="hero-content">
+          <div className="hero-container">
             
-            {/* Left Side - Main Message */}
-            <div className="hero-text">
-              <div className="hero-badge">
-                🏆 Premium au Mali
+            {/* Left Content */}
+            <div className="hero-content">
+              {/* Trust Badge */}
+              <div className="trust-badge">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>Plus de 50,000+ clients satisfaits au Mali</span>
               </div>
-              
-              <h1 className="hero-title">
-                Produits <span className="premium-text">Premium</span> de qualité
-                <br />
-                livrés directement au <span className="mali-text">Mali</span>
-              </h1>
-              
-              <p className="hero-description">
-                Économisez jusqu'à <strong>60%</strong> sur l'électronique, les téléphones et accessoires. 
-                Livraison rapide et sécurisée avec garantie complète.
-              </p>
-              
-              {/* Value Propositions */}
-              <div className="value-props">
-                <div className="value-item">
-                  <div className="value-icon">💰</div>
-                  <div>
-                    <strong>Prix imbattables</strong>
-                    <br />
-                    <span>Importateur direct</span>
-                  </div>
+
+              {/* Main Headlines */}
+              <div className="hero-headlines">
+                <div className="trending-badge">
+                  🔥 Trending
                 </div>
                 
-                <div className="value-item">
-                  <div className="value-icon">🛡️</div>
-                  <div>
-                    <strong>Garantie Premium</strong>
-                    <br />
-                    <span>Produits authentiques</span>
+                <h1 className="hero-title">
+                  <span className="hero-title-main">Produits Premium</span>
+                  <br />
+                  <span className="hero-title-gradient">de qualité livrés directement au Mali</span>
+                </h1>
+
+                <p className="hero-description">
+                  Découvrez des milliers de produits de haute qualité avec livraison garantie en 7-14 jours
+                </p>
+              </div>
+
+              {/* Trust Signals */}
+              <div className="trust-signals">
+                <div className="trust-signal">
+                  <div className="trust-signal-icon green">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                    </svg>
+                  </div>
+                  <div className="trust-signal-text">
+                    <div className="title">7-14 Jours</div>
+                    <div className="subtitle">Livraison Rapide</div>
                   </div>
                 </div>
-                
-                <div className="value-item">
-                  <div className="value-icon">🚚</div>
-                  <div>
-                    <strong>Livraison rapide</strong>
-                    <br />
-                    <span>Partout au Mali</span>
+
+                <div className="trust-signal">
+                  <div className="trust-signal-icon blue">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <div className="trust-signal-text">
+                    <div className="title">100% Garanti</div>
+                    <div className="subtitle">Remboursement</div>
                   </div>
                 </div>
               </div>
-              
+
               {/* CTA Buttons */}
-              <div className="hero-buttons">
-                <a href="/products" className="btn btn-primary btn-large">
-                  🛍️ Explorer les produits
-                </a>
-                <a href="/how-it-works" className="btn btn-outline btn-large">
-                  📖 Comment ça marche
-                </a>
+              <div className="hero-cta-buttons">
+                <button className="hero-btn-primary">
+                  Découvrir les Offres
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                
+                <button className="hero-btn-secondary">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                  </svg>
+                  Appelez-nous: +223 XX XX XX XX
+                </button>
               </div>
-              
+
               {/* Social Proof */}
               <div className="social-proof">
-                <div className="social-stats">
-                  <div className="stat">
-                    <strong>500+</strong>
-                    <span>Clients au Mali</span>
+                <div className="user-avatars">
+                  <div className="avatar-stack">
+                    <div className="avatar"></div>
+                    <div className="avatar"></div>
+                    <div className="avatar"></div>
+                    <div className="avatar"></div>
                   </div>
-                  <div className="stat">
-                    <strong>2,000+</strong>
-                    <span>Commandes livrées</span>
+                  <div className="rating">
+                    <div className="title">4.9/5 ⭐</div>
+                    <div className="subtitle">2,847 avis</div>
                   </div>
-                  <div className="stat">
-                    <strong>4.8/5</strong>
-                    <span>Satisfaction client</span>
-                  </div>
+                </div>
+
+                <div className="divider"></div>
+
+                <div className="delivery-info">
+                  <div className="title">Livraison cette semaine</div>
+                  <div className="subtitle">Pour commandes avant 14h</div>
                 </div>
               </div>
             </div>
-            
-            {/* Right Side - Hero Visual */}
-            <div className="hero-visual">
-              <div className="hero-image-container">
-                {/* Main Product Showcase */}
-                <div className="product-showcase">
-                  <div className="product-float product-1">
-                    <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=150&h=150&fit=crop" alt="iPhone Premium" />
-                    <div className="product-label">iPhone Premium</div>
-                  </div>
-                  
-                  <div className="product-float product-2">
-                    <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=150&h=150&fit=crop" alt="Écouteurs Premium" />
-                    <div className="product-label">Écouteurs Pro</div>
-                  </div>
-                  
-                  <div className="product-float product-3">
-                    <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=150&h=150&fit=crop" alt="Smartphone Premium" />
-                    <div className="product-label">Smartphone Pro</div>
-                  </div>
-                </div>
+
+            {/* Right Image */}
+            <div className="hero-image-container">
+              <div className="hero-main-image">
+                <img 
+                  src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80"
+                  alt="Produits de qualité"
+                />
                 
-                {/* Mali Delivery Visualization */}
-                <div className="route-visual">
-                  <div className="country source">
-                    <div className="flag">📦</div>
-                    <div className="label">Entrepôt</div>
+                {/* Floating Elements */}
+                <div className="floating-rating">
+                  <div className="content">
+                    <svg className="star" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <span className="score">4.9/5</span>
                   </div>
-                  
-                  <div className="route-line">
-                    <div className="plane">🚚</div>
-                    <div className="timeline">Livraison rapide</div>
+                  <div className="label">Excellence</div>
+                </div>
+
+                <div className="floating-delivery">
+                  <div className="content">
+                    <svg className="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span className="time">7-14 jours</span>
                   </div>
-                  
-                  <div className="country mali">
-                    <div className="flag">🇲🇱</div>
-                    <div className="label">Mali</div>
-                  </div>
+                  <div className="label">Livraison rapide</div>
                 </div>
               </div>
+
+              {/* Background Decoration */}
+              <div className="hero-bg-decoration"></div>
             </div>
           </div>
+        </div>
+
+        {/* Bottom Wave */}
+        <div className="hero-wave">
+          <svg viewBox="0 0 1200 120" fill="none">
+            <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z" fill="white"/>
+          </svg>
         </div>
       </section>
 
