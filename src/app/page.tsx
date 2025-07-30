@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { FeaturedProducts } from '@/components/sections/FeaturedProducts';
 import { CategoriesShowcase } from '../components/sections/CategoriesShowcase';
+import { ValuePropositions } from '../components/sections/ValuePropositions';
 
 
 
@@ -250,6 +251,8 @@ export default function HomePage() {
       {/* Featured Products Section */}
       <FeaturedProducts />
       <CategoriesShowcase />
+      <ValuePropositions />
+
 
 
 
