@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 import { FeaturedProducts } from '@/components/sections/FeaturedProducts';
 import { CategoriesShowcase } from '../components/sections/CategoriesShowcase';
 import { ValuePropositions } from '../components/sections/ValuePropositions';
+import { NewsletterSignup } from '../components/sections/NewsletterSignup';
+import { Footer } from '../components/layout/Footer';
+
 
 
 
@@ -252,6 +255,11 @@ export default function HomePage() {
       <FeaturedProducts />
       <CategoriesShowcase />
       <ValuePropositions />
+      <NewsletterSignup />
+      
+      
+
+
 
 
 
@@ -294,6 +302,7 @@ export default function HomePage() {
           </div>
         </div>
       </main>
+      <Footer />
 
       {/* SHOPPING CART COMPONENT */}
       <ShoppingCart
@@ -304,7 +313,9 @@ export default function HomePage() {
         onRemoveItem={removeItem}
       />
     </div>
+    
   );
+  
 }
 
 // Shopping Cart Component
