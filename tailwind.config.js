@@ -1,4 +1,5 @@
-﻿/** @type {import('tailwindcss').Config} */
+﻿// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,12 +9,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#2563eb',
-        secondary: '#7c3aed',
-        accent: '#f59e0b',
-      },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        mali: {
+          green: '#14B8A6',
+          yellow: '#FCD34D',
+          red: '#EF4444',
+        },
+        china: {
+          red: '#DC2626',
+          gold: '#F59E0B',
+        }
       },
     },
   },
