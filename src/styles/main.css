@@ -13,7 +13,142 @@
 @import url('../../css/pages/checkout.css');
 @import url('../../css/utilities/helpers.css');
 
+/* ADD to src/styles/main.css - SuguClick Hero Styling */
 
+/* SuguClick Hero Gradient */
+.sugu-gradient {
+  background: linear-gradient(135deg, #16a34a, #059669, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+/* Mali text styling */
+.mali-text {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+/* Update metadata and titles */
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+/* Newsletter and other sections - update brand mentions */
+.newsletter-title .sugu-gradient {
+  background: linear-gradient(135deg, #16a34a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Footer branding */
+.footer .logo .sugu {
+  color: #16a34a;
+}
+
+.footer .logo .click {
+  color: #2563eb;
+}
+
+/* ADD to src/styles/main.css - SuguClick Branding */
+
+/* SuguClick Logo Styling */
+.logo {
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo .sugu {
+  color: #16a34a; /* Green like in your image */
+  background: linear-gradient(135deg, #16a34a, #059669);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo .click {
+  color: #2563eb; /* Blue accent */
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Navigation with Icons */
+.nav a {
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav a:hover {
+  color: #2563eb;
+}
+
+/* Mobile menu icons */
+.mobile-menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-bottom: 1px solid #f3f4f6;
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+}
+
+.mobile-menu a:hover {
+  background: #f9fafb;
+  color: #2563eb;
+}
+
+/* Hover effect for logo */
+.logo:hover .sugu {
+  background: linear-gradient(135deg, #059669, #047857);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo:hover .click {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Remove old Mali Premium Store styling */
+.logo .mali,
+.logo .premium,
+.logo .store {
+  display: none;
+}
+
+/* Mobile responsive logo */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.25rem;
+  }
+}
 
 
 .premium-text {

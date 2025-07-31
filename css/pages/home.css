@@ -1,5 +1,67 @@
 /* Hero Section Styles - ADD THIS TO YOUR main.css file */
 
+/* ADD to src/styles/main.css - SuguClick Branding */
+
+/* SuguClick Logo Styling */
+.logo {
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo .sugu {
+  color: #16a34a; /* Green like in your image */
+  background: linear-gradient(135deg, #16a34a, #059669);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo .click {
+  color: #2563eb; /* Blue accent */
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hover effect for logo */
+.logo:hover .sugu {
+  background: linear-gradient(135deg, #059669, #047857);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo:hover .click {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Remove old Mali Premium Store styling */
+.logo .mali,
+.logo .premium,
+.logo .store {
+  display: none;
+}
+
+/* Mobile responsive logo */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.25rem;
+  }
+}
+
 .hero-section {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 4rem 0;

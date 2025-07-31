@@ -4,9 +4,10 @@ import { CartProvider } from '@/contexts/CartContext';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'SuguClick - Produits de qualité au Mali',
-  description: 'Votre plateforme premium pour des produits de qualité internationale, livrés directement au Mali. Prix imbattables, garantie complète.',
+  title: 'SuguClick - E-commerce au Mali',
+  description: 'SuguClick, votre marketplace malienne. Produits de qualité, livraison rapide dans tout le Mali.',
 };
+
 
 export default function RootLayout({
   children,

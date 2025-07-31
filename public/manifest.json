@@ -1,7 +1,7 @@
 ﻿{
   "name": "SuguClick",
   "short_name": "SuguClick",
-  "description": "Votre marché digital premium - Produits de qualité livrés directement au Mali",
+  "description": "Marketplace e-commerce malienne",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

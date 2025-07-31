@@ -1,185 +1,155 @@
-﻿// src/app/page.tsx - COMPLETE FILE REPLACEMENT
+﻿// src/app/page.tsx - Complete Homepage
 'use client';
 import React, { useState } from 'react';
-import { FeaturedProducts } from '@/components/sections/FeaturedProducts';
-import { CategoriesShowcase } from '../components/sections/CategoriesShowcase';
-import { ValuePropositions } from '../components/sections/ValuePropositions';
-import { NewsletterSignup } from '../components/sections/NewsletterSignup';
-import { Footer } from '../components/layout/Footer';
+import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
-
-
-
-
-// Sample cart data
-const initialCartItems = [
-  {
-    id: '1',
-    name: 'iPhone 15 Pro Max 256GB',
-    price: { usd: 899, cfa: 540000 },
-    image: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=80&h=80&fit=crop',
-    quantity: 1,
-    shipping: { cost: 15000, days: '7-10 jours' },
-    supplier: 'TechGlobal'
-  }
-];
+import { Footer } from '@/components/layout/Footer';
+import { FeaturedProducts } from '@/components/sections/FeaturedProducts';
+import { CategoriesShowcase } from '@/components/sections/CategoriesShowcase';
+import { ValuePropositions } from '@/components/sections/ValuePropositions';
+import { NewsletterSignup } from '@/components/sections/NewsletterSignup';
+import { CartSidebar } from '@/components/cart/CartSidebar';
+import { 
+  ArrowRight, 
+  ShoppingBag, 
+  Star, 
+  Truck, 
+  Shield, 
+  Clock,
+  CheckCircle,
+  Gift,
+  Users,
+  Heart
+} from 'lucide-react';
 
 export default function HomePage() {
-  // Cart state
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState(initialCartItems);
-
-  const updateQuantity = (id: string, quantity: number) => {
-    if (quantity <= 0) {
-      removeItem(id);
-    } else {
-      setCartItems(items => 
-        items.map(item => 
-          item.id === id ? { ...item, quantity } : item
-        )
-      );
-    }
-  };
-
-  const removeItem = (id: string) => {
-    setCartItems(items => items.filter(item => item.id !== id));
-  };
-
   return (
     <div>
       {/* Header */}
       <Header />
-      {/* NEW HERO SECTION with CSS Classes */}
-      <section className="new-hero-section">
-        {/* Background Pattern */}
-        <div className="bg-pattern">
-          <div className="bg-pattern-left"></div>
-          <div className="bg-pattern-right"></div>
-        </div>
 
+      {/* Hero Section */}
+      <section className="new-hero-section">
         <div className="container">
           <div className="hero-container">
             
             {/* Left Content */}
             <div className="hero-content">
-              {/* Trust Badge */}
-              <div className="trust-badge">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span>Plus de 50,000+ clients satisfaits au Mali</span>
+              <div className="hero-badge">
+                <Gift className="w-5 h-5" />
+                <span>Nouveau au Mali 🇲🇱</span>
               </div>
+              
+              <h1 className="hero-title">
+                Produits <span className="title-gradient">Premium</span>
+                <br />
+                Directement au <span className="mali-text">Mali</span>
+              </h1>
+              
+              <p className="hero-description">
+                Découvrez des milliers de produits de qualité internationale, 
+                livrés rapidement à Bamako et dans tout le Mali. 
+                Prix imbattables, garantie complète.
+              </p>
 
-              {/* Main Headlines */}
-              <div className="hero-headlines">
-                {/* <div className="trending-badge">
-                  🔥 Trending
-                </div> */}
+              {/* CTA Buttons */}
+              <div className="hero-cta-buttons">
+                <Link 
+                  href="/products" 
+                  className="hero-btn-primary"
+                >
+                  <ShoppingBag className="w-5 h-5" />
+                  Découvrir nos Produits
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
                 
-                <h1 className="hero-title">
-                  <span className="hero-title-main">Produits Premium</span>
-                  <br />
-                  <span className="hero-title-gradient">de qualité livrés directement au Mali</span>
-                </h1>
-
-                <p className="hero-description">
-                  Découvrez des milliers de produits de haute qualité avec livraison garantie en 7-14 jours
-                </p>
+                <Link 
+                  href="/products?category=telephones" 
+                  className="hero-btn-secondary"
+                >
+                  📱 Téléphones Premium
+                </Link>
               </div>
 
               {/* Trust Signals */}
               <div className="trust-signals">
-                <div className="trust-signal">
-                  <div className="trust-signal-icon green">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                    </svg>
-                  </div>
-                  <div className="trust-signal-text">
-                    <div className="title">7-14 Jours</div>
-                    <div className="subtitle">Livraison Rapide</div>
-                  </div>
+                <div className="trust-item">
+                  <CheckCircle className="w-5 h-5" />
+                  <span>Livraison 5-14 jours</span>
                 </div>
-
-                <div className="trust-signal">
-                  <div className="trust-signal-icon blue">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                  </div>
-                  <div className="trust-signal-text">
-                    <div className="title">100% Garanti</div>
-                    <div className="subtitle">Remboursement</div>
-                  </div>
+                <div className="trust-item">
+                  <Shield className="w-5 h-5" />
+                  <span>Garantie complète</span>
                 </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="hero-cta-buttons">
-                <button className="hero-btn-primary">
-                  Découvrir les Offres
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </button>
-                
-                <button className="hero-btn-secondary">
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                  </svg>
-                  Appelez-nous: +223 XX XX XX XX
-                </button>
+                <div className="trust-item">
+                  <Users className="w-5 h-5" />
+                  <span>Service client Mali</span>
+                </div>
               </div>
 
               {/* Social Proof */}
               <div className="social-proof">
-                <div className="user-avatars">
-                  <div className="avatar-stack">
-                    <div className="avatar"></div>
-                    <div className="avatar"></div>
-                    <div className="avatar"></div>
-                    <div className="avatar"></div>
-                  </div>
-                  <div className="rating">
-                    <div className="title">4.9/5 ⭐</div>
-                    <div className="subtitle">2,847 avis</div>
-                  </div>
+                <div className="customer-avatars">
+                  <div className="avatar"></div>
+                  <div className="avatar"></div>
+                  <div className="avatar"></div>
+                  <div className="avatar"></div>
                 </div>
-
-                <div className="divider"></div>
-
-                <div className="delivery-info">
-                  <div className="title">Livraison cette semaine</div>
-                  <div className="subtitle">Pour commandes avant 14h</div>
+                <div className="social-text">
+                  <div className="rating-stars">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                    ))}
+                  </div>
+                  <span><strong>2,400+</strong> clients satisfaits au Mali</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Image */}
-            <div className="hero-image-container">
+            {/* Right Visual */}
+            <div className="hero-visual">
               <div className="hero-main-image">
                 <img 
-                  src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80"
-                  alt="Produits de qualité"
+                  src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&h=500&fit=crop" 
+                  alt="iPhone Premium"
+                  className="main-product-image"
                 />
-                
-                {/* Floating Elements */}
-                <div className="floating-rating">
-                  <div className="content">
-                    <svg className="star" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <span className="score">4.9/5</span>
+
+                {/* Floating Product Cards */}
+                <div className="product-float product-float-1">
+                  <img 
+                    src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=60&h=60&fit=crop" 
+                    alt="AirPods"
+                  />
+                  <div className="float-info">
+                    <div className="float-name">AirPods Pro</div>
+                    <div className="float-price">120,000 CFA</div>
                   </div>
-                  <div className="label">Excellence</div>
                 </div>
 
+                <div className="product-float product-float-2">
+                  <img 
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=60&h=60&fit=crop" 
+                    alt="Apple Watch"
+                  />
+                  <div className="float-info">
+                    <div className="float-name">Apple Watch</div>
+                    <div className="float-price">240,000 CFA</div>
+                  </div>
+                </div>
+
+                {/* Route Visual */}
+                <div className="route-visual">
+                  <div className="route-point route-start">🇨🇳</div>
+                  <div className="route-line"></div>
+                  <div className="route-point route-end">🇲🇱</div>
+                </div>
+
+                {/* Floating Delivery Badge */}
                 <div className="floating-delivery">
                   <div className="content">
-                    <svg className="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <span className="time">7-14 jours</span>
+                    <Clock className="icon" />
+                    <span className="time">5-14 jours</span>
                   </div>
                   <div className="label">Livraison rapide</div>
                 </div>
@@ -201,197 +171,113 @@ export default function HomePage() {
 
       {/* Featured Products Section */}
       <FeaturedProducts />
+      
+      {/* Add CTA after Featured Products */}
+      <section style={{ padding: '2rem 0', textAlign: 'center', background: '#f9fafb' }}>
+        <div className="container">
+          <Link 
+            href="/products"
+            style={{
+              background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',
+              color: 'white',
+              padding: '1.25rem 3rem',
+              borderRadius: '50px',
+              fontSize: '1.125rem',
+              fontWeight: '600',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              boxShadow: '0 10px 25px rgba(37, 99, 235, 0.3)',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            Voir Tous les Produits Premium
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
+      </section>
+
+      {/* Categories Showcase */}
       <CategoriesShowcase />
+      
+      {/* Add another CTA after Categories */}
+      <section style={{ padding: '3rem 0', background: 'white' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1f2937' }}>
+            Prêt à commencer vos achats ?
+          </h2>
+          <p style={{ fontSize: '1.125rem', color: '#6b7280', marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2rem' }}>
+            Rejoignez des milliers de Maliens qui font confiance à notre plateforme 
+            pour leurs achats en ligne.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link 
+              href="/products?category=telephones"
+              style={{
+                background: 'linear-gradient(135deg, #16a34a, #15803d)',
+                color: 'white',
+                padding: '1rem 2rem',
+                borderRadius: '12px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}
+            >
+              📱 Téléphones
+            </Link>
+            <Link 
+              href="/products?category=electronique"
+              style={{
+                background: 'linear-gradient(135deg, #7c3aed, #6d28d9)',
+                color: 'white',
+                padding: '1rem 2rem',
+                borderRadius: '12px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}
+            >
+              💻 Électronique
+            </Link>
+            <Link 
+              href="/products?category=accessoires"
+              style={{
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)',
+                color: 'white',
+                padding: '1rem 2rem',
+                borderRadius: '12px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}
+            >
+              🎧 Accessoires
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Value Propositions */}
       <ValuePropositions />
+      
+      {/* Newsletter Signup */}
       <NewsletterSignup />
       
-      
-
-
-
-
-
-
-      {/* Main Content */}
-      <main className="main-content">
-        <div className="container">
-          {/* Development Notice */}
-          <div className="dev-notice">
-            🚧 Application en cours de développement 🚧
-          </div>
-          
-          {/* Trust Indicators */}
-          <div className="trust-bar">
-            <div className="trust-item">
-              📦 Livraison rapide
-            </div>
-            <div className="trust-item">
-              🛡️ Qualité premium
-            </div>
-            <div className="trust-item">
-              ⏰ Service client Mali
-            </div>
-          </div>
-          
-          {/* Page Title */}
-          <h1 className="page-title">SuguClick</h1>
-          <p className="page-subtitle">
-            Votre marché digital premium - Produits de qualité livrés directement au Mali.
-          </p>
-          
-          {/* Call to Action */}
-          <div style={{ marginBottom: '3rem' }}>
-            <a href="/products" className="btn btn-primary">
-              🛍️ Découvrir nos produits
-            </a>
-            <a href="/contact" className="btn btn-secondary" style={{ marginLeft: '1rem' }}>
-              📞 Nous contacter
-            </a>
-          </div>
-        </div>
-      </main>
+      {/* Footer */}
       <Footer />
 
-      {/* SHOPPING CART COMPONENT */}
-      <ShoppingCart
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        cartItems={cartItems}
-        onUpdateQuantity={updateQuantity}
-        onRemoveItem={removeItem}
-      />
+      {/* Cart Sidebar */}
+      <CartSidebar />
     </div>
-    
-  );
-  
-}
-
-// Shopping Cart Component
-function ShoppingCart({ isOpen, onClose, cartItems, onUpdateQuantity, onRemoveItem }: any) {
-  const subtotal = cartItems.reduce((sum: number, item: any) => sum + (item.price.cfa * item.quantity), 0);
-  const shippingTotal = cartItems.reduce((sum: number, item: any) => sum + item.shipping.cost, 0);
-  const total = subtotal + shippingTotal;
-
-  return (
-    <>
-      {isOpen && <div className="cart-overlay" onClick={onClose} />}
-      
-      <div className={`cart-sidebar ${isOpen ? 'open' : ''}`}>
-        <div className="cart-header">
-          <div className="cart-title">
-            <span>🛒</span>
-            <h2>Mon Panier</h2>
-            <span className="items-count">({cartItems.length})</span>
-          </div>
-          <button onClick={onClose} className="close-btn">✕</button>
-        </div>
-
-        <div className="cart-content">
-          {cartItems.length === 0 ? (
-            <div className="empty-cart">
-              <div className="empty-icon">🛒</div>
-              <h3>Votre panier est vide</h3>
-              <p>Découvrez nos produits premium!</p>
-              <button onClick={onClose} className="btn btn-primary">
-                Continuer les achats
-              </button>
-            </div>
-          ) : (
-            <>
-              <div className="cart-items">
-                {cartItems.map((item: any) => (
-                  <div key={item.id} className="cart-item">
-                    <div className="item-image">
-                      <img src={item.image} alt={item.name} />
-                    </div>
-
-                    <div className="item-details">
-                      <h4 className="item-name">{item.name}</h4>
-                      <p className="item-supplier">Par {item.supplier}</p>
-                      
-                      <div className="item-price">
-                        <span className="price-cfa">
-                          {item.price.cfa.toLocaleString('fr-FR')} CFA
-                        </span>
-                        <span className="price-usd">
-                          (${item.price.usd})
-                        </span>
-                      </div>
-
-                      <div className="shipping-info">
-                        🚚 {item.shipping.days} • +{item.shipping.cost.toLocaleString('fr-FR')} CFA
-                      </div>
-
-                      <div className="quantity-controls">
-                        <button 
-                          onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
-                          className="qty-btn"
-                        >
-                          -
-                        </button>
-                        <span className="quantity">{item.quantity}</span>
-                        <button 
-                          onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
-                          className="qty-btn"
-                        >
-                          +
-                        </button>
-                        <button 
-                          onClick={() => onRemoveItem(item.id)}
-                          className="remove-btn"
-                        >
-                          🗑️
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="item-total">
-                      <span className="total-price">
-                        {(item.price.cfa * item.quantity).toLocaleString('fr-FR')} CFA
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="cart-summary">
-                <div className="summary-row">
-                  <span>Sous-total</span>
-                  <span>{subtotal.toLocaleString('fr-FR')} CFA</span>
-                </div>
-                <div className="summary-row">
-                  <span>Livraison au Mali</span>
-                  <span>{shippingTotal.toLocaleString('fr-FR')} CFA</span>
-                </div>
-                <div className="summary-row total-row">
-                  <span>Total</span>
-                  <span>{total.toLocaleString('fr-FR')} CFA</span>
-                </div>
-                <div className="usd-reference">
-                  ≈ ${Math.round(total / 600)} USD
-                </div>
-              </div>
-
-              <div className="payment-methods">
-                <div className="payment-title">Paiement sécurisé avec:</div>
-                <div className="payment-options">
-                  <div className="payment-method orange">Orange Money</div>
-                  <div className="payment-method moov">Moov Money</div>
-                </div>
-              </div>
-
-              <div className="checkout-section">
-                <a href="/checkout" className="checkout-btn">
-                  🔒 Procéder au paiement
-                </a>
-                <button onClick={onClose} className="continue-shopping">
-                  Continuer les achats
-                </button>
-              </div>
-            </>
-          )}
-        </div>
-      </div>
-    </>
   );
 }

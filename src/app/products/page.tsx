@@ -1,47 +1,52 @@
-﻿// src/app/produits/page.tsx
+﻿// src/app/products/page.tsx - Complete Products Page
 'use client';
-import React, { useState } from 'react';
-import { Filter, Grid, List, Search, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { CartSidebar } from '@/components/cart/CartSidebar';
+import { Search, Filter, Grid, List, Star, Heart, Truck, Shield } from 'lucide-react';
 
-// Sample Mali-focused product data
+// Sample products data
 const sampleProducts = [
   {
     id: '1',
-    name: 'iPhone 15 Pro Max 256GB - Débloqué International',
-    price: { usd: 899, cfa: 540000 },
-    originalPrice: { usd: 1199, cfa: 720000 },
+    name: 'iPhone 15 Pro Max 256GB - Titanium Naturel',
+    price: { usd: 1199, cfa: 740000 },
+    originalPrice: { usd: 1399, cfa: 850000 },
     images: ['https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=300'],
     rating: 4.8,
     reviewCount: 2847,
-    supplier: { name: 'TechGlobal', rating: 4.9, verified: true },
-    shipping: { days: '7-10 jours', cost: 15000 },
+    supplier: { name: 'TechPremium', rating: 4.9, verified: true },
+    shipping: { days: '5-7 jours', cost: 15000 },
     inStock: true,
     badge: 'BESTSELLER',
     category: 'telephones'
   },
   {
     id: '2',
-    name: 'Samsung Galaxy S24 Ultra 512GB - Garantie Internationale',
-    price: { usd: 799, cfa: 480000 },
-    originalPrice: { usd: 999, cfa: 600000 },
+    name: 'Samsung Galaxy S24 Ultra 512GB',
+    price: { usd: 999, cfa: 620000 },
+    originalPrice: { usd: 1199, cfa: 750000 },
     images: ['https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=300'],
     rating: 4.7,
     reviewCount: 1923,
-    supplier: { name: 'ElectronicsHub', rating: 4.8, verified: true },
-    shipping: { days: '8-12 jours', cost: 12000 },
+    supplier: { name: 'PhoneMax', rating: 4.8, verified: true },
+    shipping: { days: '6-9 jours', cost: 12000 },
     inStock: true,
-    badge: 'PROMO',
+    badge: 'NOUVEAU',
     category: 'telephones'
   },
   {
     id: '3',
-    name: 'MacBook Air M3 13" - 256GB SSD, 8GB RAM',
-    price: { usd: 1099, cfa: 660000 },
-    images: ['https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=300'],
+    name: 'MacBook Pro M3 14" 16GB RAM 512GB SSD',
+    price: { usd: 1999, cfa: 1240000 },
+    images: ['https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=300'],
     rating: 4.9,
     reviewCount: 1456,
-    supplier: { name: 'Apple Authorized', rating: 4.9, verified: true },
-    shipping: { days: '10-14 jours', cost: 25000 },
+    supplier: { name: 'LaptopPro', rating: 4.7, verified: true },
+    shipping: { days: '7-12 jours', cost: 25000 },
     inStock: true,
     category: 'electronique'
   },
@@ -87,10 +92,22 @@ const sampleProducts = [
 ];
 
 export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState('tous');
+  const searchParams = useSearchParams();
+  const categoryFromUrl = searchParams.get('category') || 'tous';
+  const searchFromUrl = searchParams.get('search') || '';
+  
+  const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl);
   const [sortBy, setSortBy] = useState('popularite');
   const [viewMode, setViewMode] = useState('grid');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(searchFromUrl);
+
+  // Update state when URL changes
+  useEffect(() => {
+    const urlCategory = searchParams.get('category') || 'tous';
+    const urlSearch = searchParams.get('search') || '';
+    setSelectedCategory(urlCategory);
+    setSearchQuery(urlSearch);
+  }, [searchParams]);
 
   // Filter products based on category and search
   const filteredProducts = sampleProducts.filter(product => {
@@ -117,6 +134,9 @@ export default function ProductsPage() {
 
   return (
     <div className="products-page">
+      {/* Header */}
+      <Header />
+
       {/* Page Header */}
       <div className="products-header">
         <div className="container">
@@ -161,7 +181,7 @@ export default function ProductsPage() {
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 className="filter-select"
               >
-                <option value="tous">Tous les produits</option>
+                <option value="tous">🛍️ Tous les produits</option>
                 <option value="telephones">📱 Téléphones</option>
                 <option value="electronique">💻 Électronique</option>
                 <option value="accessoires">🎧 Accessoires</option>
@@ -241,11 +261,17 @@ export default function ProductsPage() {
           </div>
         </div>
       )}
+
+      {/* Footer */}
+      <Footer />
+      
+      {/* Cart Sidebar */}
+      <CartSidebar />
     </div>
   );
 }
 
-// Product Card Component (embedded for demo)
+// Product Card Component
 function ProductCard({ product }: { product: any }) {
   const [isFavorite, setIsFavorite] = useState(false);
   
@@ -253,110 +279,103 @@ function ProductCard({ product }: { product: any }) {
     ? Math.round(((product.originalPrice.cfa - product.price.cfa) / product.originalPrice.cfa) * 100)
     : 0;
 
-    // UPDATE: Replace the ProductCard return statement in src/app/products/page.tsx
-// Find the ProductCard function and replace its return with this:
+  const formatCFA = (amount: number) => {
+    return new Intl.NumberFormat('fr-FR').format(amount) + ' CFA';
+  };
 
-return (
-  <a href={`/products/${product.id}`} className="product-card-link">
-    <div className="product-card">
-      <div className="product-image-container">
-        {product.badge && (
-          <div className="product-badge">
-            {product.badge}
-          </div>
-        )}
-        
-        {discountPercentage > 0 && (
-          <div className="discount-badge">
-            -{discountPercentage}%
-          </div>
-        )}
-        
-        <button 
-          onClick={(e) => {
-            e.preventDefault();
-            setIsFavorite(!isFavorite);
-          }}
-          className="favorite-btn"
-        >
-          {isFavorite ? '❤️' : '🤍'}
-        </button>
-        
-        <img
-          src={product.images[0]}
-          alt={product.name}
-          className="product-image"
-        />
-        
-        <div className="product-overlay">
+  return (
+    <Link href={`/products/${product.id}`} className="product-card-link">
+      <div className="product-card">
+        <div className="product-image-container">
+          {product.badge && (
+            <div className="product-badge">
+              {product.badge}
+            </div>
+          )}
+          
+          {discountPercentage > 0 && (
+            <div className="discount-badge">
+              -{discountPercentage}%
+            </div>
+          )}
+          
           <button 
             onClick={(e) => {
               e.preventDefault();
-              // Quick view logic here
+              setIsFavorite(!isFavorite);
             }}
-            className="quick-view-btn"
+            className="favorite-btn"
           >
-            👁️ Aperçu rapide
+            <Heart className={`w-5 h-5 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} />
           </button>
-        </div>
-      </div>
-
-      <div className="product-info">
-        <div className="supplier-info">
-          <span className="supplier-name">{product.supplier.name}</span>
-          {product.supplier.verified && <span className="verified-badge">✅</span>}
-        </div>
-
-        <h3 className="product-name">{product.name}</h3>
-
-        <div className="product-rating">
-          <div className="stars">
-            {'⭐'.repeat(Math.floor(product.rating))}
-          </div>
-          <span className="review-count">({product.reviewCount})</span>
-        </div>
-
-        <div className="product-pricing">
-          <div className="current-price">
-            {product.price.cfa.toLocaleString('fr-FR')} CFA
-          </div>
-          {product.originalPrice && (
-            <div className="original-price">
-              {product.originalPrice.cfa.toLocaleString('fr-FR')} CFA
+          
+          <img 
+            src={product.images[0]} 
+            alt={product.name}
+            className="product-image"
+          />
+          
+          {!product.inStock && (
+            <div className="out-of-stock-overlay">
+              <span>Rupture de stock</span>
             </div>
           )}
-          <div className="usd-price">
-            ≈ ${product.price.usd} USD
+        </div>
+
+        <div className="product-info">
+          {/* Supplier Info */}
+          <div className="supplier-info">
+            <span className="supplier-name">{product.supplier.name}</span>
+            {product.supplier.verified && (
+              <Shield className="w-3 h-3 text-blue-500" />
+            )}
           </div>
-        </div>
 
-        <div className="shipping-info">
-          🚚 Livraison {product.shipping.days} • +{product.shipping.cost.toLocaleString('fr-FR')} CFA
-        </div>
+          {/* Product Name */}
+          <h3 className="product-name">{product.name}</h3>
 
-        <div className="stock-status">
+          {/* Rating */}
+          <div className="product-rating">
+            <div className="stars">
+              {[...Array(5)].map((_, i) => (
+                <Star 
+                  key={i} 
+                  className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} 
+                />
+              ))}
+            </div>
+            <span className="rating-text">
+              {product.rating} ({product.reviewCount})
+            </span>
+          </div>
+
+          {/* Pricing */}
+          <div className="product-pricing">
+            <div className="current-price">{formatCFA(product.price.cfa)}</div>
+            {product.originalPrice && (
+              <div className="original-price">{formatCFA(product.originalPrice.cfa)}</div>
+            )}
+            <div className="usd-price">≈ ${product.price.usd}</div>
+          </div>
+
+          {/* Shipping */}
+          <div className="shipping-info">
+            <Truck className="w-4 h-4 text-green-600" />
+            <span>Livraison {product.shipping.days}</span>
+          </div>
+
+          {/* Stock Status */}
           {product.inStock ? (
-            <span className="in-stock">✅ En stock</span>
+            <div className="stock-status in-stock">
+              ✅ En stock
+            </div>
           ) : (
-            <span className="out-stock">❌ Rupture de stock</span>
+            <div className="stock-status out-of-stock">
+              ❌ Rupture de stock
+            </div>
           )}
         </div>
-
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            // Add to cart logic here
-            alert('Produit ajouté au panier!');
-          }}
-          disabled={!product.inStock}
-          className={`add-to-cart-btn ${product.inStock ? 'available' : 'unavailable'}`}
-        >
-          🛒 {product.inStock ? 'Ajouter au panier' : 'Indisponible'}
-        </button>
       </div>
-    </div>
-  </a>
-);
-
- 
+    </Link>
+  );
 }
