@@ -7,9 +7,12 @@ import {
   User, 
   Menu, 
   X,
-  Package,
-  CheckCircle,
-  Headphones,
+  Home,
+  Shirt,
+  Smartphone,
+  Building2,
+  Baby,
+  Heart,
   TrendingUp
 } from 'lucide-react';
 
@@ -18,33 +21,16 @@ export const Header: React.FC = () => {
   const [cartItemsCount] = useState(1); // This will come from your cart state later
 
   const navigationItems = [
-    { label: 'Accueil', href: '/' },
-    { label: 'Produits', href: '/produits' },
-    { label: 'Téléphones', href: '/telephones' },
-    { label: 'Accessoires', href: '/accessoires' },
-    { label: 'Électronique', href: '/electronique' }
+    { label: 'Accueil', href: '/', icon: <Home className="w-4 h-4" /> },
+    { label: 'Mode', href: '/mode-beaute', icon: <Shirt className="w-4 h-4" /> },
+    { label: 'Tech', href: '/telephones-tech', icon: <Smartphone className="w-4 h-4" /> },
+    { label: 'Maison', href: '/maison-lifestyle', icon: <Building2 className="w-4 h-4" /> },
+    { label: 'Enfants', href: '/enfants-bebes', icon: <Baby className="w-4 h-4" /> },
+    { label: 'Santé', href: '/sante-bien-etre', icon: <Heart className="w-4 h-4" /> }
   ];
 
   return (
     <header className="header-container">
-      {/* Trust Badges Bar */}
-      <div className="trust-bar">
-        <div className="trust-badges">
-          <div className="trust-badge">
-            <Package className="w-4 h-4 text-amber-600" />
-            <span>Livraison rapide</span>
-          </div>
-          <div className="trust-badge">
-            <CheckCircle className="w-4 h-4 text-green-600" />
-            <span>Qualité premium</span>
-          </div>
-          <div className="trust-badge">
-            <Headphones className="w-4 h-4 text-blue-600" />
-            <span>Service client Mali</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Header */}
       <div className="main-header">
         <div className="header-content">
@@ -66,7 +52,8 @@ export const Header: React.FC = () => {
           <nav className="desktop-nav">
             {navigationItems.map((item) => (
               <a key={item.label} href={item.href} className="nav-link">
-                {item.label}
+                <span className="nav-icon">{item.icon}</span>
+                <span className="nav-text">{item.label}</span>
               </a>
             ))}
           </nav>
@@ -101,21 +88,17 @@ export const Header: React.FC = () => {
         <div className="mobile-nav">
           {navigationItems.map((item) => (
             <a key={item.label} href={item.href} className="mobile-nav-link">
-              {item.label}
+              <span className="mobile-nav-icon">{item.icon}</span>
+              <span>{item.label}</span>
             </a>
           ))}
         </div>
       )}
 
-
       {/* Satisfaction Banner */}
       <div className="satisfaction-banner">
         <div className="satisfaction-content">
           <span className="satisfaction-text">Plus de 50,000+ clients satisfaits - Sugu Click, votre marché digital</span>
-          <div className="trending-badge">
-            <TrendingUp className="w-4 h-4" />
-            <span>Trending</span>
-          </div>
         </div>
       </div>
     </header>

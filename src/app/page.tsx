@@ -6,6 +6,7 @@ import { CategoriesShowcase } from '../components/sections/CategoriesShowcase';
 import { ValuePropositions } from '../components/sections/ValuePropositions';
 import { NewsletterSignup } from '../components/sections/NewsletterSignup';
 import { Footer } from '../components/layout/Footer';
+import { Header } from '@/components/layout/Header';
 
 
 
@@ -47,59 +48,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Header */}
-      <header className="header">
-        {/* Trust Bar */}
-        <div className="header-top">
-          📦 Livraison rapide ✅ Qualité premium 🎧 Service client Mali
-        </div>
-        
-        {/* Main Header */}
-        <div className="container">
-          <div className="header-content">
-            {/* Logo */}
-            <a href="/" className="logo">
-              <span className="sugu-text">Sugu</span>
-              <span className="click-text"> Click</span>
-            </a>
-            
-            {/* Navigation */}
-            <nav>
-              <ul className="nav">
-                <li><a href="/">Accueil</a></li>
-                <li><a href="/products">Produits</a></li>
-                <li><a href="/phones">Téléphones</a></li>
-                <li><a href="/accessories">Accessoires</a></li>
-                <li><a href="/electronics">Électronique</a></li>
-              </ul>
-            </nav>
-            
-            {/* Search */}
-            <div className="search-container">
-              <input 
-                type="text" 
-                className="search-input" 
-                placeholder="Rechercher des produits..."
-              />
-              <svg className="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-              </svg>
-            </div>
-            
-            {/* Cart & User */}
-            <div className="header-actions">
-              {/* WORKING CART BUTTON */}
-              <button 
-                onClick={() => setIsCartOpen(true)}
-                className="cart-btn"
-              >
-                🛒
-                <span className="cart-badge">{cartItems.length}</span>
-              </button>
-              <a href="/auth" className="user-btn">👤</a>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
       {/* NEW HERO SECTION with CSS Classes */}
       <section className="new-hero-section">
         {/* Background Pattern */}
@@ -123,9 +72,9 @@ export default function HomePage() {
 
               {/* Main Headlines */}
               <div className="hero-headlines">
-                <div className="trending-badge">
+                {/* <div className="trending-badge">
                   🔥 Trending
-                </div>
+                </div> */}
                 
                 <h1 className="hero-title">
                   <span className="hero-title-main">Produits Premium</span>
