@@ -50,58 +50,10 @@ export const Header: React.FC = () => {
   return (
     <header className="header-container">
       {/* Main Header */}
-      <div className="main-header">
-        <div className="header-content">
-          {/* Mobile Menu Button */}
-          <button 
-            className="mobile-menu-btn lg:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-
-          {/* SuguClick Logo */}
-          <Link href="/" className="logo">
-            <span className="logo-sugu">Sugu</span>
-            <span className="logo-click">Click</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="desktop-nav">
-            {navigationItems.map((item) => (
-              <Link key={item.label} href={item.href} className="nav-link">
-                <span className="nav-icon">{item.icon}</span>
-                <span className="nav-text">{item.label}</span>
-              </Link>
-            ))}
-          </nav>
-
-          {/* Header Actions (Cart, User - without search) */}
-          <div className="header-actions">
-            <button 
-              className="user-btn"
-              onClick={handleUserClick}
-            >
-              <User className="w-6 h-6" />
-            </button>
-
-            <button 
-              className="cart-btn" 
-              onClick={toggleCart}
-            >
-              <ShoppingCart className="w-6 h-6" />
-              {totalItems > 0 && (
-                <span className="cart-badge">
-                  {totalItems > 99 ? '99+' : totalItems}
-                </span>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
+      
 
       {/* Search Bar Section */}
-      <div className="search-section">
+      {/* <div className="search-section">
         <div className="search-wrapper">
           <div className="search-container">
             <Search className="search-icon" />
@@ -114,7 +66,7 @@ export const Header: React.FC = () => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (

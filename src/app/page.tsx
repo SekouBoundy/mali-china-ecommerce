@@ -9,6 +9,8 @@ import { CategoriesShowcase } from '@/components/sections/CategoriesShowcase';
 import { ValuePropositions } from '@/components/sections/ValuePropositions';
 import { NewsletterSignup } from '@/components/sections/NewsletterSignup';
 import { CartSidebar } from '@/components/cart/CartSidebar';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
+
 import { 
   ArrowRight, 
   ShoppingBag, 
@@ -24,6 +26,7 @@ import {
 
 export default function HomePage() {
   return (
+    <DashboardLayout title="Accueil" breadcrumb={[]}>
     <div>
       {/* Header */}
       <Header />
@@ -279,5 +282,6 @@ export default function HomePage() {
       {/* Cart Sidebar */}
       <CartSidebar />
     </div>
+    </DashboardLayout>
   );
 }

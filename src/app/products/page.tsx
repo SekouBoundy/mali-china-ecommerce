@@ -7,6 +7,8 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { CartSidebar } from '@/components/cart/CartSidebar';
 import { Search, Filter, Grid, List, Star, Heart, Truck, Shield } from 'lucide-react';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
+
 
 // Sample products data
 const sampleProducts = [
@@ -133,6 +135,7 @@ export default function ProductsPage() {
   });
 
   return (
+    <DashboardLayout title="Tous les Produits" breadcrumb={['Produits']}>
     <div className="products-page">
       {/* Header */}
       <Header />
@@ -268,6 +271,7 @@ export default function ProductsPage() {
       {/* Cart Sidebar */}
       <CartSidebar />
     </div>
+    </DashboardLayout>
   );
 }
 
