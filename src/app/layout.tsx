@@ -1,5 +1,6 @@
-﻿// src/app/layout.tsx
-import '../styles/main.css';  // Import your CSS
+﻿// UPDATE src/app/layout.tsx
+import '../styles/main.css';
+import { CartProvider } from '@/contexts/CartContext';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body>
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

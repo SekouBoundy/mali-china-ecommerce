@@ -25,3 +25,6 @@ npm run dev
 - Prisma + PostgreSQL
 - Redux Toolkit
 - NextAuth.js
+
+## Run
+ npm run dev
