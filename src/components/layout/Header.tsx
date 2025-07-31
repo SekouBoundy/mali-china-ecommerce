@@ -1,12 +1,14 @@
 ﻿// src/components/layout/Header.tsx
 'use client';
-import React, { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
+import { HeaderActions } from './HeaderActions';
+import React, { useState, useEffect } from 'react';
 import { 
   Search, 
   ShoppingCart, 
   User, 
-  Menu, 
-  X,
   Home,
   Shirt,
   Smartphone,
@@ -16,9 +18,45 @@ import {
   TrendingUp
 } from 'lucide-react';
 
+
 export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [cartItemsCount] = useState(1); // This will come from your cart state later
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  // ADD THIS STATE FOR SCROLL BEHAVIOR
+  const [showSatisfactionBanner, setShowSatisfactionBanner] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // ADD THIS USEEFFECT FOR SCROLL DETECTION
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Hide banner when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setShowSatisfactionBanner(false);
+      } else if (currentScrollY < lastScrollY) {
+        setShowSatisfactionBanner(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
+  const router = useRouter();
+  
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
+  const handleUserClick = () => {
+    router.push('/account');
+  };
 
   const navigationItems = [
     { label: 'Accueil', href: '/', icon: <Home className="w-4 h-4" /> },
@@ -28,6 +66,7 @@ export const Header: React.FC = () => {
     { label: 'Enfants', href: '/enfants-bebes', icon: <Baby className="w-4 h-4" /> },
     { label: 'Santé', href: '/sante-bien-etre', icon: <Heart className="w-4 h-4" /> }
   ];
+    const totalItems = 0;
 
   return (
     <header className="header-container">
@@ -59,27 +98,13 @@ export const Header: React.FC = () => {
           </nav>
 
           {/* Search Bar */}
-          <div className="search-container">
-            <Search className="search-icon" />
-            <input
-              type="text"
-              placeholder="Rechercher des produits..."
-              className="search-input"
-            />
-          </div>
-
-          {/* Header Actions */}
-          <div className="header-actions">
-            <button className="cart-btn">
-              <ShoppingCart className="w-6 h-6" />
-              {cartItemsCount > 0 && (
-                <span className="cart-badge">{cartItemsCount}</span>
-              )}
-            </button>
-            <button className="user-btn">
-              <User className="w-6 h-6" />
-            </button>
-          </div>
+            <HeaderActions 
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            cartItems={totalItems}
+            onCartClick={toggleCart}
+            onUserClick={handleUserClick}
+          />
         </div>
       </div>
 
@@ -95,10 +120,10 @@ export const Header: React.FC = () => {
         </div>
       )}
 
-      {/* Satisfaction Banner */}
-      <div className="satisfaction-banner">
-        <div className="satisfaction-content">
-          <span className="satisfaction-text">Plus de 50,000+ clients satisfaits - Sugu Click, votre marché digital</span>
+      {/* Satisfaction Banner - ADD THE CONDITIONAL RENDERING */}
+      <div className={`header-top ${showSatisfactionBanner ? 'banner-visible' : 'banner-hidden'}`}>
+        <div className="satisfaction-text">
+          Plus de 50,000+ clients satisfaits - Sugu Click, votre marché digital
         </div>
       </div>
     </header>
