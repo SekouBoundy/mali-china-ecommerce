@@ -58,9 +58,8 @@ export default function HomePage() {
           <div className="header-content">
             {/* Logo */}
             <a href="/" className="logo">
-              <span className="mali">Mali</span>
-              <span className="premium"> Premium</span>
-              <span className="store"> Store</span>
+              <span className="sugu-text">Sugu</span>
+              <span className="click-text"> Click</span>
             </a>
             
             {/* Navigation */}
@@ -286,9 +285,9 @@ export default function HomePage() {
           </div>
           
           {/* Page Title */}
-          <h1 className="page-title">Mali Premium Store</h1>
+          <h1 className="page-title">SuguClick</h1>
           <p className="page-subtitle">
-            Votre plateforme premium pour des produits de qualité internationale, livrés directement au Mali.
+            Votre marché digital premium - Produits de qualité livrés directement au Mali.
           </p>
           
           {/* Call to Action */}

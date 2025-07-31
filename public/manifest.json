@@ -1,11 +1,11 @@
 ﻿{
-  "name": "MaliChina Store",
-  "short_name": "MaliChina",
-  "description": "E-commerce platform connecting Mali with Chinese suppliers",
+  "name": "SuguClick",
+  "short_name": "SuguClick",
+  "description": "Votre marché digital premium - Produits de qualité livrés directement au Mali",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "theme_color": "#14B8A6",
   "icons": [
     {
       "src": "/images/icons/icon-192x192.png",

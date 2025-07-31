@@ -321,7 +321,7 @@ export default function AuthPage() {
 
           {/* Benefits */}
           <div className="auth-benefits">
-            <h3>Avantages du compte Mali Premium Store</h3>
+            <h3>Avantages du compte SuguClick</h3>
             <ul>
               <li>🎯 Suivi en temps réel de vos commandes</li>
               <li>💖 Liste de souhaits et favoris</li>

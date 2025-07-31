@@ -151,17 +151,16 @@ export const Footer: React.FC = () => {
             <div className="footer-company">
               <div className="company-logo">
                 <h3 className="logo-text">
-                  <span className="mali-text">Mali</span>
-                  <span className="china-text">China</span>
-                  <span className="store-text"> Store</span>
+                  <span className="sugu-text">Sugu</span>
+                  <span className="click-text">Click</span>
                 </h3>
-                <div className="logo-tagline">Votre partenaire mode & tech</div>
+                <div className="logo-tagline">Votre marché digital</div>
               </div>
 
               <p className="company-description">
-                Mali-China Store est votre destination de confiance pour des produits 
-                de qualité à prix imbattables. Nous connectons les jeunes Maliennes 
-                aux dernières tendances mondiales.
+              SuguClick est votre marché digital de confiance pour des produits 
+              de qualité à prix imbattables. Le premier e-commerce en Bambara 
+              qui comprend vraiment les besoins des Maliens.
               </p>
 
               {/* Contact Info */}
@@ -176,7 +175,7 @@ export const Footer: React.FC = () => {
                 </div>
                 <div className="contact-item">
                   <Mail className="w-4 h-4" />
-                  <span>contact@malichinastore.com</span>
+                  <span>contact@suguclick.com</span>
                 </div>
                 <div className="contact-item">
                   <MapPin className="w-4 h-4" />
@@ -341,7 +340,7 @@ export const Footer: React.FC = () => {
           <div className="bottom-content">
             <div className="bottom-left">
               <p className="copyright">
-                © 2024 Mali-China Store. Tous droits réservés.
+                © 2025 SuguClick Store. Tous droits réservés.
               </p>
               <div className="certifications">
                 <div className="cert-item">
