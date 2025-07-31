@@ -121,11 +121,11 @@ export const Header: React.FC = () => {
       )}
 
       {/* Satisfaction Banner - ADD THE CONDITIONAL RENDERING */}
-      <div className={`header-top ${showSatisfactionBanner ? 'banner-visible' : 'banner-hidden'}`}>
+      {/* <div className={`header-top ${showSatisfactionBanner ? 'banner-visible' : 'banner-hidden'}`}>
         <div className="satisfaction-text">
           Plus de 50,000+ clients satisfaits - Sugu Click, votre marché digital
         </div>
-      </div>
+      </div> */}
     </header>
   );
 };
