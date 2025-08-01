@@ -53,23 +53,20 @@ export const HorizontalHeader = () => {
       <div className="px-4 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           
-          {/* Logo - Your SuguClick Branding */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center">
-              <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                <div className="w-4 h-4 bg-gradient-to-br from-green-500 to-blue-600 rounded-full"></div>
-              </div>
-            </div>
-            <div className="flex items-center">
-              <span className="text-2xl font-black bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">
-                Sugu
-              </span>
-              <span className="text-2xl font-black bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
-                Click
-              </span>
-            </div>
-            <span className="text-sm text-gray-500 ml-2 hidden md:block">Mali Store</span>
-          </Link>
+        {/* Logo - Your SuguClick Branding */}
+        <Link href="/" className="logo-container">
+            <img 
+                src="/images/logo-suguclick.png" 
+                alt="SuguClick - Mali Store"
+                className="logo-default"
+            />
+            <img 
+                src="/images/logo-hover-suguclick.png" 
+                alt="SuguClick - Mali Store"
+                className="logo-hover"
+            />
+        </Link>
+
 
           {/* Desktop Navigation - Fashion Nova Style */}
           <nav className="hidden lg:flex items-center space-x-8">

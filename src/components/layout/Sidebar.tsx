@@ -134,54 +134,19 @@ export const Sidebar: React.FC = () => {
             opacity: 0.3
           }} />
           
-          <div className="sidebar-logo" style={{ position: 'relative', zIndex: 2 }}>
-            {/* Logo Icon with your brand colors */}
-            <div className="logo-icon" style={{
-              background: 'white',
-              color: '#16a34a',
-              border: '2px solid rgba(255,255,255,0.3)',
-              boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
-            }}>
-              <div style={{
-                width: '24px',
-                height: '24px',
-                background: 'linear-gradient(135deg, #16a34a, #2563eb)',
-                borderRadius: '50%',
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                <div style={{
-                  width: '8px',
-                  height: '8px',
-                  background: 'white',
-                  borderRadius: '50%'
-                }} />
-              </div>
+          <div className="sidebar-logo">
+          <img 
+            src="/images/logo-suguclick.png" 
+            alt="SuguClick"
+            className="h-8 w-auto object-contain"
+          />
+          {!isCollapsed && (
+            <div className="logo-text">
+              <span className="logo-sub">Mali Store</span>
             </div>
-            {!isCollapsed && (
-              <div className="logo-text">
-                <div style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '800',
-                  color: 'white',
-                  lineHeight: '1',
-                  display: 'flex'
-                }}>
-                  <span style={{ color: '#fff' }}>Sugu</span>
-                  <span style={{ color: '#e0f2fe' }}>Click</span>
-                </div>
-                <div style={{
-                  fontSize: '0.75rem',
-                  color: 'rgba(255,255,255,0.8)',
-                  fontWeight: '500'
-                }}>
-                  Mali Store
-                </div>
-              </div>
-            )}
-          </div>
+          )}
+        </div>
+
           
           <button 
             className="sidebar-toggle"
