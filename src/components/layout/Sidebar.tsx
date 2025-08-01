@@ -15,7 +15,9 @@ import {
   Heart,
   Clock,
   Menu,
-  X
+  X,
+    Info,        // <- ADD THIS
+  MessageCircle
 } from 'lucide-react';
 
 interface NavItem {
@@ -30,32 +32,45 @@ export const Sidebar: React.FC = () => {
   const pathname = usePathname();
 
   const mainNavItems: NavItem[] = [
-    {
-      href: '/',
-      label: 'Accueil',
-      icon: <Home className="w-5 h-5" />
-    },
-    {
-      href: '/products',
-      label: 'Tous Produits',
-      icon: <Package className="w-5 h-5" />
-    },
-    {
-      href: '/categories/phones',
-      label: 'Téléphones',
-      icon: <Smartphone className="w-5 h-5" />
-    },
-    {
-      href: '/categories/accessories', 
-      label: 'Accessoires',
-      icon: <Headphones className="w-5 h-5" />
-    },
-    {
-      href: '/categories/electronics',
-      label: 'Électronique', 
-      icon: <Monitor className="w-5 h-5" />
-    }
-  ];
+  {
+    href: '/',
+    label: 'Accueil',
+    icon: <Home className="w-5 h-5" />
+  },
+  {
+    href: '/products',
+    label: 'Tous Produits',
+    icon: <Package className="w-5 h-5" />
+  },
+  {
+    href: '/categories/phones',
+    label: 'Téléphones',
+    icon: <Smartphone className="w-5 h-5" />
+  },
+  {
+    href: '/categories/accessories', 
+    label: 'Accessoires',
+    icon: <Headphones className="w-5 h-5" />
+  },
+  {
+    href: '/categories/electronics',
+    label: 'Électronique', 
+    icon: <Monitor className="w-5 h-5" />
+  },
+  // ADD THESE TWO NEW ITEMS:
+  {
+    href: '/about',
+    label: 'À propos',
+    icon: <Info className="w-5 h-5" />
+  },
+  {
+    href: '/contact',
+    label: 'Contact',
+    icon: <MessageCircle className="w-5 h-5" />
+  }
+];
+  
+  
 
   const userNavItems: NavItem[] = [
     {

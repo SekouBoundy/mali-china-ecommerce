@@ -354,3 +354,397 @@
     padding: 0.75rem 1rem;
   }
 }
+/* ADD TO src/styles/main.css - About Page Styles */
+
+/* About Hero Section */
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 3rem 0;
+  margin-bottom: 4rem;
+}
+
+.hero-content {
+  max-width: 100%;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.sugu-gradient {
+  background: linear-gradient(135deg, #16a34a, #059669, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mali-text {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+.hero-image {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Our Story Section */
+.our-story {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  padding: 3rem 0;
+}
+
+.story-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+}
+
+.story-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+.story-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #16a34a;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.5rem;
+}
+
+/* Our Values Section */
+.our-values {
+  margin-bottom: 4rem;
+  padding: 3rem 0;
+}
+
+.our-values h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.value-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.value-icon {
+  width: 4rem;
+  height: 4rem;
+  background: linear-gradient(135deg, #16a34a, #059669);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.value-icon .icon {
+  width: 2rem;
+  height: 2rem;
+  color: white;
+}
+
+.value-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.value-card p {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+  background: #f8fafc;
+  border-radius: 24px;
+  padding: 3rem;
+  margin-bottom: 4rem;
+}
+
+.why-choose-us h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.reason-item {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.reason-number {
+  position: absolute;
+  top: -0.75rem;
+  left: 1.5rem;
+  background: linear-gradient(135deg, #16a34a, #059669);
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.reason-item h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 1rem 0 0.75rem;
+}
+
+.reason-item p {
+  color: #6b7280;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Our Commitment Section */
+.our-commitment {
+  margin-bottom: 4rem;
+  padding: 3rem 0;
+}
+
+.commitment-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+}
+
+.commitment-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+.commitment-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.action-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.action-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #16a34a;
+  flex-shrink: 0;
+}
+
+.action-item h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #166534;
+  margin-bottom: 0.5rem;
+}
+
+.action-item p {
+  color: #15803d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Contact CTA Section */
+.contact-cta {
+  background: linear-gradient(135deg, #16a34a, #059669);
+  border-radius: 24px;
+  padding: 3rem;
+  text-align: center;
+  color: white;
+}
+
+.contact-cta h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.contact-cta p {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: white;
+  color: #16a34a;
+}
+
+.btn-primary:hover {
+  background: #f3f4f6;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.phone {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .our-story {
+    grid-template-columns: 1fr;
+  }
+  
+  .story-stats {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .reasons-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .commitment-actions {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .why-choose-us {
+    padding: 2rem 1.5rem;
+  }
+}
