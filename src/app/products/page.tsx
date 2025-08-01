@@ -1,106 +1,138 @@
-﻿// UPDATE src/app/products/page.tsx - Replace your current products grid section
+﻿// src/app/products/page.tsx
 'use client';
 import React, { useState } from 'react';
 import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { CategoryTabs } from '@/components/product/CategoryTabs';
 import { EnhancedFilterBar } from '@/components/product/EnhancedFilterBar';
-import { EnhancedProductCard } from '@/components/product/EnhancedProductCard';
+import { MarketplaceProductCard } from '@/components/product/MarketplaceProductCard';
+
 
 // Enhanced sample products data
 const enhancedProducts = [
   {
     id: '1',
-    name: 'iPhone 15 Pro Max 256GB Titanium Naturel',
-    price: { cfa: 740000, usd: 1199 },
+    name: 'Men Shoes Summer Sneakers Mesh Breathable Sport Running',
+    price: { cfa: 595250, usd: 1199 },
     originalPrice: { cfa: 850000 },
-    image: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
     images: [
-      'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1605236453806-b465faa04422?w=400&h=400&fit=crop'
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&h=400&fit=crop'
     ],
-    category: 'Smartphones',
-    rating: 4.8,
-    reviewCount: 2847,
+    category: 'Chaussures',
+    rating: 5,
+    reviewCount: 27,
     inStock: true,
-    badge: 'sale' as const,
+    badge: 'choice' as const,
     shipping: { cost: 15000, days: '5-7 jours' },
-    description: 'Le smartphone le plus avancé avec puce A17 Pro et système de caméra révolutionnaire.'
+    description: 'Chaussures de sport respirantes pour hommes, parfaites pour la course et les activités estivales.',
+    extraDiscount: 'Extra 1% off with coins'
   },
   {
     id: '2',
-    name: 'Samsung Galaxy S24 Ultra 512GB',
-    price: { cfa: 650000, usd: 999 },
-    image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop',
+    name: 'Non-slip Men\'s Summer Sneakers Comfortable Walking Shoes',
+    price: { cfa: 546310, usd: 999 },
+    originalPrice: { cfa: 1511470 },
+    image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
     images: [
-      'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
       'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&h=400&fit=crop'
     ],
-    category: 'Smartphones',
-    rating: 4.6,
-    reviewCount: 1923,
+    category: 'Chaussures',
+    rating: 4.5,
+    reviewCount: 3,
     inStock: true,
-    badge: 'popular' as const,
+    badge: 'choice' as const,
     shipping: { cost: 15000, days: '7-10 jours' },
-    description: 'Galaxy AI révolutionne votre façon de communiquer, créer et travailler.'
+    description: 'Baskets antidérapantes pour hommes, confort optimal pour la marche quotidienne.'
   },
   {
     id: '3',
-    name: 'MacBook Pro 14" M3 Pro 1TB Space Black',
-    price: { cfa: 1250000, usd: 1999 },
-    originalPrice: { cfa: 1350000 },
-    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop',
+    name: 'Big Size 46 47 Sneakers Summer Men Running Sports Shoes',
+    price: { cfa: 755940, usd: 1999 },
+    image: 'https://images.unsplash.com/photo-1520256862855-398228c41684?w=400&h=400&fit=crop',
     images: [
-      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1520256862855-398228c41684?w=400&h=400&fit=crop',
       'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=400&fit=crop'
     ],
-    category: 'Ordinateurs',
-    rating: 4.9,
-    reviewCount: 856,
+    category: 'Chaussures',
+    rating: 5,
+    reviewCount: 11,
     inStock: true,
-    badge: 'new' as const,
+    badge: 'sale' as const,
     shipping: { cost: 25000, days: '3-5 jours' },
-    description: 'Performance professionnelle avec la puce M3 Pro ultra-rapide.'
+    description: 'Grandes tailles disponibles, chaussures de sport pour hommes, parfaites pour la course.'
   },
   {
     id: '4',
-    name: 'AirPods Pro 2ème génération USB-C',
-    price: { cfa: 145000, usd: 249 },
-    image: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&h=400&fit=crop',
-    category: 'Accessoires',
-    rating: 4.7,
-    reviewCount: 3241,
+    name: 'High Quality Sneakers Men Summer Breathable Mesh Running',
+    price: { cfa: 706070, usd: 249 },
+    originalPrice: { cfa: 850000 },
+    image: 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=400&h=400&fit=crop',
+    category: 'Chaussures',
+    rating: 4.3,
+    reviewCount: 212,
     inStock: true,
-    badge: 'popular' as const,
+    badge: 'sale' as const,
     shipping: { cost: 10000, days: '3-5 jours' },
-    description: 'Audio spatial personnalisé et réduction de bruit adaptative.'
+    description: 'Baskets de haute qualité pour hommes, mesh respirant pour l\'été.',
+    extraDiscount: 'Extra 1% off with coins'
   },
   {
     id: '5',
-    name: 'iPad Pro 12.9" M2 1TB WiFi + Cellular',
+    name: 'Professional Gaming Headset RGB LED Wireless Bluetooth',
     price: { cfa: 890000, usd: 1449 },
     originalPrice: { cfa: 950000 },
-    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=400&fit=crop',
-    category: 'Tablettes',
+    image: 'https://images.unsplash.com/photo-1599669454699-248893623440?w=400&h=400&fit=crop',
+    category: 'Accessoires',
     rating: 4.8,
-    reviewCount: 1456,
-    inStock: false,
-    badge: 'limited' as const,
+    reviewCount: 156,
+    inStock: true,
+    badge: 'choice' as const,
     shipping: { cost: 20000, days: '7-14 jours' },
-    description: 'L\'expérience iPad la plus avancée avec la puce M2.'
+    description: 'Casque gaming professionnel avec éclairage RGB et connexion sans fil.'
   },
   {
     id: '6',
-    name: 'Apple Watch Series 9 45mm GPS + Cellular',
+    name: 'Wireless Bluetooth Earbuds Pro Max Noise Cancelling',
     price: { cfa: 290000, usd: 479 },
-    image: 'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=400&fit=crop',
-    category: 'Montres',
+    image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=400&fit=crop',
+    category: 'Accessoires',
     rating: 4.5,
-    reviewCount: 2156,
+    reviewCount: 89,
     inStock: true,
     badge: 'new' as const,
     shipping: { cost: 12000, days: '5-7 jours' },
-    description: 'La montre connectée la plus avancée avec puce S9.'
+    description: 'Écouteurs sans fil avec réduction de bruit active et autonomie longue durée.'
+  },
+  {
+    id: '7',
+    name: 'Smart Watch Series 9 GPS Health Monitoring Fitness Tracker',
+    price: { cfa: 450000, usd: 399 },
+    originalPrice: { cfa: 500000 },
+    image: 'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=400&fit=crop',
+    category: 'Montres',
+    rating: 4.7,
+    reviewCount: 243,
+    inStock: true,
+    badge: 'choice' as const,
+    shipping: { cost: 15000, days: '5-7 jours' },
+    description: 'Montre connectée avec suivi de santé avancé et GPS intégré.'
+  },
+  {
+    id: '8',
+    name: 'Premium Leather Wallet RFID Blocking Multiple Card Slots',
+    price: { cfa: 125000, usd: 89 },
+    originalPrice: { cfa: 180000 },
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
+    category: 'Accessoires',
+    rating: 4.6,
+    reviewCount: 67,
+    inStock: true,
+    badge: 'sale' as const,
+    shipping: { cost: 8000, days: '3-5 jours' },
+    description: 'Portefeuille en cuir premium avec protection RFID et multiples compartiments.',
+    extraDiscount: 'Extra 1% off with coins'
   }
 ];
 
@@ -126,7 +158,7 @@ export default function ProductsPage() {
     
     if (category !== 'all') {
       const categoryMap: { [key: string]: string } = {
-        'phones': 'Smartphones',
+        'shoes': 'Chaussures',
         'accessories': 'Accessoires',
         'electronics': 'Électronique',
         'watches': 'Montres',
@@ -156,7 +188,7 @@ export default function ProductsPage() {
     console.log('Applied filters:', filters);
   };
 
-  const handleAddToCart = (productId: string, quantity: number) => {
+  const handleAddToCart = (productId: string, quantity: number = 1) => {
     // Implement add to cart logic
     console.log(`Added ${quantity} of product ${productId} to cart`);
     // You could show a toast notification here
@@ -196,42 +228,40 @@ export default function ProductsPage() {
         resultsCount={filteredProducts.length}
       />
       
-      {/* Enhanced Products Grid */}
-      <div className={`enhanced-products-container ${currentView}-view`}>
-        <div className={`products-grid-restaurant ${currentView === 'grid' ? 'grid-mode' : 'list-mode'}`}>
+      {/* Marketplace Products Grid - 4 per row */}
+      <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {filteredProducts.map((product) => (
-            <EnhancedProductCard
+            <MarketplaceProductCard
               key={product.id}
-              product={product}
-              viewMode={currentView}
+              product={{
+                ...product,
+                soldCount: product.reviewCount // Using reviewCount as soldCount for now
+              }}
               onAddToCart={handleAddToCart}
-              onQuickView={handleQuickView}
-              onToggleWishlist={handleToggleWishlist}
-              isInWishlist={wishlist.includes(product.id)}
             />
           ))}
         </div>
         
         {filteredProducts.length === 0 && (
-          <div className="no-products-found">
-            <div className="no-products-content">
-              <div className="no-products-icon">🔍</div>
-              <h3>Aucun produit trouvé</h3>
-              <p>Essayez de modifier vos filtres ou votre recherche</p>
-              <button 
-                onClick={() => {
-                  setActiveCategory('all');
-                  setSearchQuery('');
-                  setFilteredProducts(enhancedProducts);
-                }}
-                className="reset-search-btn"
-              >
-                Voir tous les produits
-              </button>
-            </div>
+          <div className="text-center py-12">
+            <div className="text-6xl mb-4">🔍</div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Aucun produit trouvé</h3>
+            <p className="text-gray-600 mb-6">Essayez de modifier vos filtres ou votre recherche</p>
+            <button 
+              onClick={() => {
+                setActiveCategory('all');
+                setSearchQuery('');
+                setFilteredProducts(enhancedProducts);
+              }}
+              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Voir tous les produits
+            </button>
           </div>
         )}
       </div>
     </DashboardLayout>
+    
   );
 }
