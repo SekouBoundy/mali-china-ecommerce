@@ -7,11 +7,16 @@ import { CategoriesShowcase } from '../components/sections/CategoriesShowcase';
 import { ValuePropositions } from '../components/sections/ValuePropositions';
 import { NewsletterSignup } from '../components/sections/NewsletterSignup';
 import { Footer } from '../components/layout/Footer';
+import { HeroSection } from '@/components/sections/HeroSection';
+
 
 export default function HomePage() {
   return (
     <DashboardLayout title="Accueil" breadcrumb={[]}>
-      {/* Your existing homepage content */}
+      {/* Add the new HeroSection FIRST */}
+      <HeroSection />
+      
+      {/* Your existing components below */}
       <FeaturedProducts />
       <CategoriesShowcase />
       <ValuePropositions />
