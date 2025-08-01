@@ -41,7 +41,7 @@ export const HorizontalHeader: React.FC = () => {
       </div>
 
       {/* Main Header */}
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 py-3">
         <div className="flex items-center h-16 gap-8">
           
           {/* Logo */}
@@ -64,7 +64,7 @@ export const HorizontalHeader: React.FC = () => {
               <Home className="w-4 h-4" />
               ACCUEIL
             </Link>
-            <Link href="/produits" className="text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center gap-2">
+            <Link href="/products" className="text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center gap-2">
               <Package className="w-4 h-4" />
               PRODUITS
             </Link>
@@ -143,16 +143,16 @@ export const HorizontalHeader: React.FC = () => {
       <div className="border-t border-gray-100 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center space-x-8 py-3 overflow-x-auto">
-            <Link href="/nouveautes" className="text-red-600 hover:text-red-700 font-medium text-sm whitespace-nowrap transition-colors">
+            <Link href="/products?filter=nouveautes" className="text-red-600 hover:text-red-700 font-medium text-sm whitespace-nowrap transition-colors">
               🔥 NOUVEAUTÉS
             </Link>
-            <Link href="/bestsellers" className="text-yellow-600 hover:text-yellow-700 font-medium text-sm whitespace-nowrap transition-colors">
+            <Link href="/products?filter=bestsellers" className="text-yellow-600 hover:text-yellow-700 font-medium text-sm whitespace-nowrap transition-colors">
               ⭐ BESTSELLERS
             </Link>
-            <Link href="/promo" className="text-green-600 hover:text-green-700 font-medium text-sm whitespace-nowrap transition-colors">
+            <Link href="/products?filter=promo" className="text-green-600 hover:text-green-700 font-medium text-sm whitespace-nowrap transition-colors">
               💰 PROMO -30%
             </Link>
-            <Link href="/premium" className="text-purple-600 hover:text-purple-700 font-medium text-sm whitespace-nowrap transition-colors">
+            <Link href="/products?filter=premium" className="text-purple-600 hover:text-purple-700 font-medium text-sm whitespace-nowrap transition-colors">
               👑 PREMIUM
             </Link>
           </div>
@@ -172,7 +172,7 @@ export const HorizontalHeader: React.FC = () => {
               <span>ACCUEIL</span>
             </Link>
             <Link 
-              href="/produits" 
+              href="/products" 
               className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
