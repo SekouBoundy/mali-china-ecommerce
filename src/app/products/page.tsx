@@ -5,6 +5,7 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { CategoryTabs } from '@/components/product/CategoryTabs';
 import { EnhancedFilterBar } from '@/components/product/EnhancedFilterBar';
 import { MarketplaceProductCard } from '@/components/product/MarketplaceProductCard';
+import { Footer } from '@/components/layout/Footer';
 
 
 // Enhanced sample products data
@@ -261,6 +262,7 @@ export default function ProductsPage() {
           </div>
         )}
       </div>
+      <Footer />
     </DashboardLayout>
     
   );
