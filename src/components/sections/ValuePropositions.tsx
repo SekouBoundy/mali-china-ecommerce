@@ -281,7 +281,7 @@ export const ValuePropositions: React.FC = () => {
         </div>
 
         {/* Customer Testimonial */}
-        <div className="testimonial-section">
+        {/* <div className="testimonial-section">
           <div className="testimonial-card">
             <div className="testimonial-content">
               <div className="testimonial-stars">
@@ -303,7 +303,7 @@ export const ValuePropositions: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* CTA Section */}
         <div className="value-cta">

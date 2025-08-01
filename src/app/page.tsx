@@ -20,7 +20,7 @@ export default function HomePage() {
       <FeaturedProducts />
       <CategoriesShowcase />
       <ValuePropositions />
-      <NewsletterSignup />
+      {/* <NewsletterSignup /> */}
       <Footer />
     </DashboardLayout>
   );
