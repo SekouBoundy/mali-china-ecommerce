@@ -1,5 +1,7 @@
 /* src/styles/main.css */
-
+@tailwind base;
+@tailwind components; 
+@tailwind utilities;
 
 @import url('../../css/base/reset.css');
 @import url('../../css/base/variables.css');
