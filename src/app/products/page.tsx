@@ -1,385 +1,237 @@
-﻿// src/app/products/page.tsx - Complete Products Page
+﻿// UPDATE src/app/products/page.tsx - Replace your current products grid section
 'use client';
-import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { CartSidebar } from '@/components/cart/CartSidebar';
-import { Search, Filter, Grid, List, Star, Heart, Truck, Shield } from 'lucide-react';
+import React, { useState } from 'react';
 import { DashboardLayout } from '@/components/layout/DashboardLayout';
+import { CategoryTabs } from '@/components/product/CategoryTabs';
+import { EnhancedFilterBar } from '@/components/product/EnhancedFilterBar';
+import { EnhancedProductCard } from '@/components/product/EnhancedProductCard';
 
-
-// Sample products data
-const sampleProducts = [
+// Enhanced sample products data
+const enhancedProducts = [
   {
     id: '1',
-    name: 'iPhone 15 Pro Max 256GB - Titanium Naturel',
-    price: { usd: 1199, cfa: 740000 },
-    originalPrice: { usd: 1399, cfa: 850000 },
-    images: ['https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=300'],
+    name: 'iPhone 15 Pro Max 256GB Titanium Naturel',
+    price: { cfa: 740000, usd: 1199 },
+    originalPrice: { cfa: 850000 },
+    image: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop',
+    images: [
+      'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1605236453806-b465faa04422?w=400&h=400&fit=crop'
+    ],
+    category: 'Smartphones',
     rating: 4.8,
     reviewCount: 2847,
-    supplier: { name: 'TechPremium', rating: 4.9, verified: true },
-    shipping: { days: '5-7 jours', cost: 15000 },
     inStock: true,
-    badge: 'BESTSELLER',
-    category: 'telephones'
+    badge: 'sale' as const,
+    shipping: { cost: 15000, days: '5-7 jours' },
+    description: 'Le smartphone le plus avancé avec puce A17 Pro et système de caméra révolutionnaire.'
   },
   {
     id: '2',
     name: 'Samsung Galaxy S24 Ultra 512GB',
-    price: { usd: 999, cfa: 620000 },
-    originalPrice: { usd: 1199, cfa: 750000 },
-    images: ['https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=300'],
-    rating: 4.7,
+    price: { cfa: 650000, usd: 999 },
+    image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop',
+    images: [
+      'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&h=400&fit=crop'
+    ],
+    category: 'Smartphones',
+    rating: 4.6,
     reviewCount: 1923,
-    supplier: { name: 'PhoneMax', rating: 4.8, verified: true },
-    shipping: { days: '6-9 jours', cost: 12000 },
     inStock: true,
-    badge: 'NOUVEAU',
-    category: 'telephones'
+    badge: 'popular' as const,
+    shipping: { cost: 15000, days: '7-10 jours' },
+    description: 'Galaxy AI révolutionne votre façon de communiquer, créer et travailler.'
   },
   {
     id: '3',
-    name: 'MacBook Pro M3 14" 16GB RAM 512GB SSD',
-    price: { usd: 1999, cfa: 1240000 },
-    images: ['https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=300'],
+    name: 'MacBook Pro 14" M3 Pro 1TB Space Black',
+    price: { cfa: 1250000, usd: 1999 },
+    originalPrice: { cfa: 1350000 },
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop',
+    images: [
+      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=400&fit=crop'
+    ],
+    category: 'Ordinateurs',
     rating: 4.9,
-    reviewCount: 1456,
-    supplier: { name: 'LaptopPro', rating: 4.7, verified: true },
-    shipping: { days: '7-12 jours', cost: 25000 },
+    reviewCount: 856,
     inStock: true,
-    category: 'electronique'
+    badge: 'new' as const,
+    shipping: { cost: 25000, days: '3-5 jours' },
+    description: 'Performance professionnelle avec la puce M3 Pro ultra-rapide.'
   },
   {
     id: '4',
-    name: 'AirPods Pro 2ème Génération - Réduction de Bruit Active',
-    price: { usd: 199, cfa: 120000 },
-    originalPrice: { usd: 249, cfa: 150000 },
-    images: ['https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=300'],
-    rating: 4.9,
-    reviewCount: 3421,
-    supplier: { name: 'AudioMax', rating: 4.9, verified: true },
-    shipping: { days: '5-8 jours', cost: 8000 },
+    name: 'AirPods Pro 2ème génération USB-C',
+    price: { cfa: 145000, usd: 249 },
+    image: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&h=400&fit=crop',
+    category: 'Accessoires',
+    rating: 4.7,
+    reviewCount: 3241,
     inStock: true,
-    badge: 'TOP VENTE',
-    category: 'accessoires'
+    badge: 'popular' as const,
+    shipping: { cost: 10000, days: '3-5 jours' },
+    description: 'Audio spatial personnalisé et réduction de bruit adaptative.'
   },
   {
     id: '5',
-    name: 'iPad Pro 11" M4 - 128GB WiFi + Cellular',
-    price: { usd: 899, cfa: 540000 },
-    images: ['https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=300'],
+    name: 'iPad Pro 12.9" M2 1TB WiFi + Cellular',
+    price: { cfa: 890000, usd: 1449 },
+    originalPrice: { cfa: 950000 },
+    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=400&fit=crop',
+    category: 'Tablettes',
     rating: 4.8,
-    reviewCount: 987,
-    supplier: { name: 'TabletPro', rating: 4.7, verified: true },
-    shipping: { days: '9-13 jours', cost: 20000 },
-    inStock: true,
-    category: 'electronique'
+    reviewCount: 1456,
+    inStock: false,
+    badge: 'limited' as const,
+    shipping: { cost: 20000, days: '7-14 jours' },
+    description: 'L\'expérience iPad la plus avancée avec la puce M2.'
   },
   {
     id: '6',
-    name: 'Apple Watch Series 9 GPS + Cellular 45mm',
-    price: { usd: 399, cfa: 240000 },
-    originalPrice: { usd: 499, cfa: 300000 },
-    images: ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300'],
-    rating: 4.6,
-    reviewCount: 1876,
-    supplier: { name: 'WearableTech', rating: 4.8, verified: true },
-    shipping: { days: '7-11 jours', cost: 10000 },
-    inStock: false,
-    category: 'accessoires'
+    name: 'Apple Watch Series 9 45mm GPS + Cellular',
+    price: { cfa: 290000, usd: 479 },
+    image: 'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=400&fit=crop',
+    category: 'Montres',
+    rating: 4.5,
+    reviewCount: 2156,
+    inStock: true,
+    badge: 'new' as const,
+    shipping: { cost: 12000, days: '5-7 jours' },
+    description: 'La montre connectée la plus avancée avec puce S9.'
   }
 ];
 
 export default function ProductsPage() {
-  const searchParams = useSearchParams();
-  const categoryFromUrl = searchParams.get('category') || 'tous';
-  const searchFromUrl = searchParams.get('search') || '';
-  
-  const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl);
-  const [sortBy, setSortBy] = useState('popularite');
-  const [viewMode, setViewMode] = useState('grid');
-  const [searchQuery, setSearchQuery] = useState(searchFromUrl);
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [currentView, setCurrentView] = useState<'grid' | 'list'>('grid');
+  const [filteredProducts, setFilteredProducts] = useState(enhancedProducts);
+  const [wishlist, setWishlist] = useState<string[]>([]);
 
-  // Update state when URL changes
-  useEffect(() => {
-    const urlCategory = searchParams.get('category') || 'tous';
-    const urlSearch = searchParams.get('search') || '';
-    setSelectedCategory(urlCategory);
-    setSearchQuery(urlSearch);
-  }, [searchParams]);
+  const handleCategoryChange = (categoryId: string) => {
+    setActiveCategory(categoryId);
+    filterProducts(categoryId, searchQuery);
+  };
 
-  // Filter products based on category and search
-  const filteredProducts = sampleProducts.filter(product => {
-    const matchesCategory = selectedCategory === 'tous' || product.category === selectedCategory;
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+    filterProducts(activeCategory, query);
+  };
 
-  // Sort products
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    switch (sortBy) {
-      case 'prix-croissant':
-        return a.price.cfa - b.price.cfa;
-      case 'prix-decroissant':
-        return b.price.cfa - a.price.cfa;
-      case 'note':
-        return b.rating - a.rating;
-      case 'nouveautes':
-        return b.reviewCount - a.reviewCount;
-      default: // popularité
-        return b.reviewCount - a.reviewCount;
-    }
-  });
-
-  return (
-    <DashboardLayout title="Tous les Produits" breadcrumb={['Produits']}>
-    <div className="products-page">
-      {/* Header */}
-      <Header />
-
-      {/* Page Header */}
-      <div className="products-header">
-        <div className="container">
-          <div className="header-content">
-            <div className="header-text">
-              <h1 className="page-title">Nos Produits Premium</h1>
-              <p className="page-subtitle">
-                Découvrez notre sélection de produits de qualité internationale au Mali
-              </p>
-            </div>
-            <div className="results-count">
-              {sortedProducts.length} produit{sortedProducts.length > 1 ? 's' : ''} trouvé{sortedProducts.length > 1 ? 's' : ''}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Filters and Controls */}
-      <div className="products-controls">
-        <div className="container">
-          <div className="controls-wrapper">
-            
-            {/* Search Bar */}
-            <div className="search-section">
-              <div className="search-container">
-                <Search className="search-icon" />
-                <input
-                  type="text"
-                  placeholder="Rechercher un produit..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="search-input"
-                />
-              </div>
-            </div>
-
-            {/* Category Filter */}
-            <div className="filter-section">
-              <label className="filter-label">Catégorie:</label>
-              <select 
-                value={selectedCategory} 
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="filter-select"
-              >
-                <option value="tous">🛍️ Tous les produits</option>
-                <option value="telephones">📱 Téléphones</option>
-                <option value="electronique">💻 Électronique</option>
-                <option value="accessoires">🎧 Accessoires</option>
-              </select>
-            </div>
-
-            {/* Sort Options */}
-            <div className="sort-section">
-              <label className="filter-label">Trier par:</label>
-              <select 
-                value={sortBy} 
-                onChange={(e) => setSortBy(e.target.value)}
-                className="filter-select"
-              >
-                <option value="popularite">Popularité</option>
-                <option value="prix-croissant">Prix croissant</option>
-                <option value="prix-decroissant">Prix décroissant</option>
-                <option value="note">Meilleures notes</option>
-                <option value="nouveautes">Nouveautés</option>
-              </select>
-            </div>
-
-            {/* View Mode Toggle */}
-            <div className="view-toggle">
-              <button 
-                onClick={() => setViewMode('grid')}
-                className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
-              >
-                <Grid className="view-icon" />
-              </button>
-              <button 
-                onClick={() => setViewMode('list')}
-                className={`view-btn ${viewMode === 'list' ? 'active' : ''}`}
-              >
-                <List className="view-icon" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Products Grid */}
-      <div className="products-section">
-        <div className="container">
-          {sortedProducts.length === 0 ? (
-            <div className="no-results">
-              <div className="no-results-icon">🔍</div>
-              <h3>Aucun produit trouvé</h3>
-              <p>Essayez de modifier vos critères de recherche</p>
-              <button 
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('tous');
-                }}
-                className="btn btn-primary"
-              >
-                Réinitialiser les filtres
-              </button>
-            </div>
-          ) : (
-            <div className={`products-grid ${viewMode}`}>
-              {sortedProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Load More */}
-      {sortedProducts.length > 0 && (
-        <div className="load-more-section">
-          <div className="container">
-            <button className="btn btn-secondary btn-large">
-              Charger plus de produits
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Footer */}
-      <Footer />
+  const filterProducts = (category: string, search: string) => {
+    let filtered = enhancedProducts;
+    
+    if (category !== 'all') {
+      const categoryMap: { [key: string]: string } = {
+        'phones': 'Smartphones',
+        'accessories': 'Accessoires',
+        'electronics': 'Électronique',
+        'watches': 'Montres',
+        'cameras': 'Caméras',
+        'gaming': 'Gaming',
+        'laptops': 'Ordinateurs'
+      };
       
-      {/* Cart Sidebar */}
-      <CartSidebar />
-    </div>
-    </DashboardLayout>
-  );
-}
+      const categoryName = categoryMap[category];
+      if (categoryName) {
+        filtered = filtered.filter(product => product.category === categoryName);
+      }
+    }
+    
+    if (search) {
+      filtered = filtered.filter(product => 
+        product.name.toLowerCase().includes(search.toLowerCase()) ||
+        product.category.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+    
+    setFilteredProducts(filtered);
+  };
 
-// Product Card Component
-function ProductCard({ product }: { product: any }) {
-  const [isFavorite, setIsFavorite] = useState(false);
-  
-  const discountPercentage = product.originalPrice 
-    ? Math.round(((product.originalPrice.cfa - product.price.cfa) / product.originalPrice.cfa) * 100)
-    : 0;
+  const handleFilterChange = (filters: any) => {
+    // Implement your filtering logic here
+    console.log('Applied filters:', filters);
+  };
 
-  const formatCFA = (amount: number) => {
-    return new Intl.NumberFormat('fr-FR').format(amount) + ' CFA';
+  const handleAddToCart = (productId: string, quantity: number) => {
+    // Implement add to cart logic
+    console.log(`Added ${quantity} of product ${productId} to cart`);
+    // You could show a toast notification here
+    alert(`Produit ajouté au panier! Quantité: ${quantity}`);
+  };
+
+  const handleQuickView = (productId: string) => {
+    // Implement quick view modal logic
+    console.log(`Quick view for product ${productId}`);
+    // You could open a modal with product details here
+  };
+
+  const handleToggleWishlist = (productId: string) => {
+    setWishlist(prev => 
+      prev.includes(productId) 
+        ? prev.filter(id => id !== productId)
+        : [...prev, productId]
+    );
   };
 
   return (
-    <Link href={`/products/${product.id}`} className="product-card-link">
-      <div className="product-card">
-        <div className="product-image-container">
-          {product.badge && (
-            <div className="product-badge">
-              {product.badge}
-            </div>
-          )}
-          
-          {discountPercentage > 0 && (
-            <div className="discount-badge">
-              -{discountPercentage}%
-            </div>
-          )}
-          
-          <button 
-            onClick={(e) => {
-              e.preventDefault();
-              setIsFavorite(!isFavorite);
-            }}
-            className="favorite-btn"
-          >
-            <Heart className={`w-5 h-5 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} />
-          </button>
-          
-          <img 
-            src={product.images[0]} 
-            alt={product.name}
-            className="product-image"
-          />
-          
-          {!product.inStock && (
-            <div className="out-of-stock-overlay">
-              <span>Rupture de stock</span>
-            </div>
-          )}
+    <DashboardLayout title="Nos Produits Premium" breadcrumb={['Produits']}>
+      
+      {/* Category Tabs */}
+      <CategoryTabs 
+        activeCategory={activeCategory}
+        onCategoryChange={handleCategoryChange}
+      />
+      
+      {/* Enhanced Filter Bar */}
+      <EnhancedFilterBar
+        searchQuery={searchQuery}
+        onSearchChange={handleSearchChange}
+        onFilterChange={handleFilterChange}
+        onViewChange={setCurrentView}
+        currentView={currentView}
+        resultsCount={filteredProducts.length}
+      />
+      
+      {/* Enhanced Products Grid */}
+      <div className={`enhanced-products-container ${currentView}-view`}>
+        <div className={`products-grid-restaurant ${currentView === 'grid' ? 'grid-mode' : 'list-mode'}`}>
+          {filteredProducts.map((product) => (
+            <EnhancedProductCard
+              key={product.id}
+              product={product}
+              viewMode={currentView}
+              onAddToCart={handleAddToCart}
+              onQuickView={handleQuickView}
+              onToggleWishlist={handleToggleWishlist}
+              isInWishlist={wishlist.includes(product.id)}
+            />
+          ))}
         </div>
-
-        <div className="product-info">
-          {/* Supplier Info */}
-          <div className="supplier-info">
-            <span className="supplier-name">{product.supplier.name}</span>
-            {product.supplier.verified && (
-              <Shield className="w-3 h-3 text-blue-500" />
-            )}
-          </div>
-
-          {/* Product Name */}
-          <h3 className="product-name">{product.name}</h3>
-
-          {/* Rating */}
-          <div className="product-rating">
-            <div className="stars">
-              {[...Array(5)].map((_, i) => (
-                <Star 
-                  key={i} 
-                  className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} 
-                />
-              ))}
+        
+        {filteredProducts.length === 0 && (
+          <div className="no-products-found">
+            <div className="no-products-content">
+              <div className="no-products-icon">🔍</div>
+              <h3>Aucun produit trouvé</h3>
+              <p>Essayez de modifier vos filtres ou votre recherche</p>
+              <button 
+                onClick={() => {
+                  setActiveCategory('all');
+                  setSearchQuery('');
+                  setFilteredProducts(enhancedProducts);
+                }}
+                className="reset-search-btn"
+              >
+                Voir tous les produits
+              </button>
             </div>
-            <span className="rating-text">
-              {product.rating} ({product.reviewCount})
-            </span>
           </div>
-
-          {/* Pricing */}
-          <div className="product-pricing">
-            <div className="current-price">{formatCFA(product.price.cfa)}</div>
-            {product.originalPrice && (
-              <div className="original-price">{formatCFA(product.originalPrice.cfa)}</div>
-            )}
-            <div className="usd-price">≈ ${product.price.usd}</div>
-          </div>
-
-          {/* Shipping */}
-          <div className="shipping-info">
-            <Truck className="w-4 h-4 text-green-600" />
-            <span>Livraison {product.shipping.days}</span>
-          </div>
-
-          {/* Stock Status */}
-          {product.inStock ? (
-            <div className="stock-status in-stock">
-              ✅ En stock
-            </div>
-          ) : (
-            <div className="stock-status out-of-stock">
-              ❌ Rupture de stock
-            </div>
-          )}
-        </div>
+        )}
       </div>
-    </Link>
+    </DashboardLayout>
   );
 }

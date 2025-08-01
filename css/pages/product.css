@@ -1,3 +1,1095 @@
-body {
-    background-color: lightblue !important;
+/* ADD TO src/styles/main.css - Restaurant-Style Product Cards */
+
+/* Restaurant-Style Product Card */
+.product-card-restaurant {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+.product-card-restaurant:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: #16a34a;
+}
+
+/* Product Image Container */
+.product-image-container {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+}
+
+.product-image-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.product-image-main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.product-card-restaurant:hover .product-image-main {
+  transform: scale(1.08);
+}
+
+/* Image Navigation Dots */
+.image-navigation {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+  background: #16a34a;
+  transform: scale(1.2);
+}
+
+.nav-dot:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Product Badges */
+.product-badges-container {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 3;
+}
+
+.product-badge-restaurant {
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeInDown 0.5s ease;
+}
+
+.badge-new {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+.badge-sale {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.badge-popular {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.badge-limited {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+.badge-out-stock {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Quick Actions Overlay */
+.quick-actions-overlay {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.quick-actions-overlay.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.quick-action-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.quick-action-btn:hover {
+  background: white;
+  color: #16a34a;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.quick-action-btn.active {
+  background: #16a34a;
+  color: white;
+}
+
+/* Product Info Section */
+.product-info-restaurant {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Product Meta */
+.product-meta-restaurant {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #16a34a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: #f0fdf4;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.product-rating-restaurant {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  width: 14px;
+  height: 14px;
+  color: #e5e7eb;
+  transition: color 0.2s ease;
+}
+
+.star.filled {
+  color: #fbbf24;
+  fill: currentColor;
+}
+
+.rating-value {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin-left: 4px;
+}
+
+/* Product Title */
+.product-title-restaurant {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Trust Indicators */
+.trust-indicators {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.trust-item svg {
+  flex-shrink: 0;
+}
+
+/* Pricing Section */
+.pricing-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price-main {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.current-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #16a34a;
+  line-height: 1;
+}
+
+.currency {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #16a34a;
+}
+
+.price-comparison {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.original-price {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.discount-badge {
+  background: #fef2f2;
+  color: #dc2626;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.price-usd {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Purchase Section */
+.purchase-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.quantity-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.quantity-btn:hover:not(:disabled) {
+  background: #16a34a;
+  color: white;
+  transform: scale(1.05);
+}
+
+.quantity-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-value {
+  font-weight: 600;
+  color: #111827;
+  min-width: 20px;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.add-to-cart-btn-restaurant {
+  flex: 1;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+.add-to-cart-btn-restaurant:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.4);
+}
+
+.add-to-cart-btn-restaurant:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* List View Styles */
+.product-card-list {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.product-card-list:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  border-color: #16a34a;
+}
+
+.product-image-list {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.product-image-list img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-info-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-header-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.product-title-list {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.product-rating-list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.rating-text {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.product-description-list {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-meta-list {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.shipping-info,
+.stock-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.stock-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.stock-indicator.in-stock {
+  background: #16a34a;
+}
+
+.stock-indicator.out-stock {
+  background: #ef4444;
+}
+
+.product-actions-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  min-width: 160px;
+}
+
+.price-section-list {
+  text-align: right;
+}
+
+.price-section-list .price-current {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #16a34a;
+  display: block;
+}
+
+.price-section-list .price-original {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.price-section-list .price-usd {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.quantity-controls-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.quantity-controls-list .qty-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quantity-controls-list .qty-btn:hover {
+  background: #16a34a;
+  color: white;
+}
+
+.quantity-display {
+  font-weight: 600;
+  min-width: 24px;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.action-buttons-list {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-add-to-cart-list {
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-add-to-cart-list:hover {
+  background: #15803d;
+  transform: translateY(-1px);
+}
+
+.btn-wishlist {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-wishlist:hover {
+  border-color: #16a34a;
+  color: #16a34a;
+}
+
+.btn-wishlist.active {
+  background: #fef2f2;
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .product-card-restaurant {
+    border-radius: 16px;
+  }
+  
+  .product-image-container {
+    height: 220px;
+  }
+  
+  .product-info-restaurant {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .product-title-restaurant {
+    font-size: 1rem;
+  }
+  
+  .current-price {
+    font-size: 1.25rem;
+  }
+  
+  .trust-indicators {
+    gap: 8px;
+  }
+  
+  .trust-item {
+    font-size: 0.6875rem;
+  }
+  
+  .purchase-section {
+    gap: 8px;
+  }
+  
+  .product-card-list {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  
+  .product-image-list {
+    width: 100%;
+    height: 160px;
+  }
+  
+  .product-header-list {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  .product-actions-list {
+    width: 100%;
+    align-items: center;
+  }
+  
+  .action-buttons-list {
+    width: 100%;
+  }
+  
+  .btn-add-to-cart-list {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-info-restaurant {
+    padding: 12px;
+  }
+  
+  .quick-actions-overlay {
+    position: static;
+    opacity: 1;
+    transform: none;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  
+  .trust-indicators {
+    justify-content: center;
+  }
+  
+  .purchase-section {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .quantity-controls {
+    align-self: center;
+  }
+  
+  .add-to-cart-btn-restaurant {
+    width: 100%;
+  }
+}
+
+/* ADD TO src/styles/main.css - Final Layout & Grid Styles */
+
+/* Enhanced Products Container */
+.enhanced-products-container {
+  margin-bottom: 2rem;
+}
+
+/* Products Grid Restaurant Style */
+.products-grid-restaurant {
+  display: grid;
+  gap: 24px;
+  transition: all 0.3s ease;
+}
+
+.products-grid-restaurant.grid-mode {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.products-grid-restaurant.list-mode {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* No Products Found */
+.no-products-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  background: white;
+  border-radius: 20px;
+  margin-top: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.no-products-content {
+  text-align: center;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+.no-products-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+.no-products-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.no-products-content p {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.reset-search-btn {
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+.reset-search-btn:hover {
+  background: #15803d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.4);
+}
+
+/* Product Loading Animation */
+.product-loading {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.product-skeleton {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 280px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-content {
+  padding: 24px;
+}
+
+.skeleton-line {
+  height: 16px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-line.short {
+  width: 60%;
+}
+
+.skeleton-line.medium {
+  width: 80%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Product Hover Effects Enhancement */
+.product-card-restaurant {
+  will-change: transform;
+}
+
+.product-card-restaurant::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(22, 163, 74, 0.02), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.product-card-restaurant:hover::before {
+  opacity: 1;
+}
+
+/* Improved Scrollbar for Mobile */
+.enhanced-products-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(22, 163, 74, 0.3) transparent;
+}
+
+.enhanced-products-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.enhanced-products-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.enhanced-products-container::-webkit-scrollbar-thumb {
+  background: rgba(22, 163, 74, 0.3);
+  border-radius: 3px;
+}
+
+.enhanced-products-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(22, 163, 74, 0.5);
+}
+
+/* Performance Optimizations */
+.product-image-main,
+.quick-actions-overlay,
+.product-badges-container {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Focus States for Accessibility */
+.quick-action-btn:focus,
+.quantity-btn:focus,
+.add-to-cart-btn-restaurant:focus {
+  outline: 2px solid #16a34a;
+  outline-offset: 2px;
+}
+
+.product-card-restaurant:focus-within {
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+}
+
+/* Print Styles */
+@media print {
+  .quick-actions-overlay,
+  .purchase-section,
+  .trust-indicators {
+    display: none !important;
+  }
+  
+  .product-card-restaurant {
+    break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .product-card-restaurant {
+    border: 2px solid #000;
+  }
+  
+  .product-badge-restaurant {
+    border: 1px solid #000;
+  }
+  
+  .add-to-cart-btn-restaurant {
+    border: 2px solid #000;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .product-card-restaurant,
+  .product-image-main,
+  .quick-actions-overlay,
+  .add-to-cart-btn-restaurant {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .product-card-restaurant:hover {
+    transform: none !important;
+  }
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+  .product-card-restaurant {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .product-title-restaurant {
+    color: #f9fafb;
+  }
+  
+  .product-category {
+    background: rgba(22, 163, 74, 0.2);
+    color: #34d399;
+  }
+  
+  .trust-item {
+    color: #34d399;
+  }
+  
+  .rating-value {
+    color: #d1d5db;
+  }
+  
+  .price-usd {
+    color: #9ca3af;
+  }
+}
+
+/* Mobile Responsive Enhancements */
+@media (max-width: 1024px) {
+  .products-grid-restaurant.grid-mode {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .enhanced-products-container {
+    margin-bottom: 1rem;
+  }
+  
+  .products-grid-restaurant.grid-mode {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+  }
+  
+  .no-products-found {
+    min-height: 300px;
+    margin-top: 1rem;
+  }
+  
+  .no-products-content {
+    padding: 1.5rem;
+  }
+  
+  .no-products-icon {
+    font-size: 3rem;
+  }
+  
+  .no-products-content h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .products-grid-restaurant.grid-mode {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .product-card-restaurant {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .enhanced-products-container {
+    padding: 0 8px;
+  }
+  
+  .products-grid-restaurant {
+    gap: 12px;
+  }
+  
+  .no-products-content {
+    padding: 1rem;
+  }
+  
+  .reset-search-btn {
+    padding: 10px 20px;
+    font-size: 0.8125rem;
+  }
+}
+
+/* Tablet Landscape Optimizations */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .products-grid-restaurant.grid-mode {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  .product-image-container {
+    height: 240px;
+  }
+}
+
+/* Large Screen Optimizations */
+@media (min-width: 1536px) {
+  .products-grid-restaurant.grid-mode {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 32px;
+  }
+  
+  .product-image-container {
+    height: 320px;
+  }
 }
