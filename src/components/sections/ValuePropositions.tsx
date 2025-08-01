@@ -126,7 +126,7 @@ export const ValuePropositions: React.FC = () => {
         <div className="value-header">
           <div className="value-badge">
             <Award className="w-5 h-5 text-mali-green" />
-            <span>Pourquoi Choisir Mali-China Store ?</span>
+            <span>Pourquoi Choisir SuguClick ?</span>
           </div>
           
           <h2 className="value-title">
